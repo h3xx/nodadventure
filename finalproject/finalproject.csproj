@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EEBB8321-642D-4651-A7BA-BB31826DA2F3}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>finalproject</RootNamespace>
+    <AssemblyName>finalproject</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Externalconsole>true</Externalconsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Externalconsole>true</Externalconsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="GameMain.cs" />
+    <Compile Include="Hint.cs" />
+    <Compile Include="Inventory.cs" />
+    <Compile Include="GallonPuzzle.cs" />
+    <Compile Include="Bucket.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="English.cs" />
+    <Compile Include="Room.cs" />
+    <Compile Include="Exits.cs" />
+    <Compile Include="Messages.cs" />
+    <Compile Include="Closet.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Commands.cs" />
+    <Compile Include="Synonyms.cs" />
+    <Compile Include="PhotoOfYou.cs" />
+    <Compile Include="Toolbox.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
