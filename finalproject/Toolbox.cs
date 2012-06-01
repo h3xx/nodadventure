@@ -28,6 +28,10 @@ namespace finalproject {
 			int newSize = ary.Length - length;
 			Array.Resize<T>(ref ary, newSize);
 		}
+
+		public static string UcFirst (string str) {
+			return str.Substring(0,1).ToUpper() + str.Substring(1);
+		}
 	}
 }
 

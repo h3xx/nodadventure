@@ -6,13 +6,15 @@ WARRANTY, to the extent permitted by law.
 */
 namespace finalproject {
 	using System;
+	using System.Collections.Generic;
 	class PhotoOfYou : Item {
+
+		private static string lookstring = "You see a picture of yourself at a recent fishing trip. You are holding a red herring and smiling.";
+
 		public PhotoOfYou ()
 			: base("photo") {
-		}
-		
-		public override string Look () {
-			return "You see a picture of yourself at a recent fishing trip. You are holding a red herring and smiling.";
+			this.actionMessages.Remove("look");
+			this.actionMessages.Add("look", lookstring);
 		}
 		
 		public override string PerformAction (string act) {

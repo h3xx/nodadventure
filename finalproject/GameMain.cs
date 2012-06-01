@@ -21,15 +21,25 @@ namespace finalproject {
 			//roomDemo();
 			//englishDemo();
 			//cmdDemo();
-			pickupDemo();
+			//pickupDemo();
+			actionDemo();
 			holdTerminal();
 		}
+
+		private static void actionDemo () {
+			PhotoOfYou p = new PhotoOfYou();
+			Console.WriteLine(Toolbox.UcFirst(p.ToString()));
+			Console.WriteLine(p.Take());
+			Console.WriteLine(p.Take());
+			Console.WriteLine(p.Look());
+		}
+
 		private static void pickupDemo () {
 			Bucket b = new Bucket(3);
 			Console.WriteLine(b.ToString());
-			Console.WriteLine(b.Pickup());
+			Console.WriteLine(b.Take());
 			b.PlayerHas = true;
-			Console.WriteLine(b.Pickup());
+			Console.WriteLine(b.Take());
 		}
 
 /*

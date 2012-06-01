@@ -9,6 +9,10 @@ namespace finalproject {
 	using System.Collections.Generic;
 	class Item {
 	
+		protected Dictionary<string, string> actionMessages = new Dictionary<string, string>() {
+			{"take", "Taken."},
+			{"drop", "Dropped."},
+		};
 		public bool PlayerHas = false;
 
 		protected string type,
@@ -145,19 +149,27 @@ namespace finalproject {
 			return Messages.RandomSilly(this.TerseDesc());
 		}
 
-		public string Pickup () {
+		public virtual string Take () {
 			if (this.PlayerHas) {
 				return Messages.RandomAlreadyHave(this.TerseDesc());
 			}
 			this.PlayerHas = true;
+			string pickupMsg;
+			if (this.actionMessages.TryGetValue("take", out pickupMsg)) {
+				return pickupMsg;
+			}
 			return "Taken.";
 		}
 
-		public string Drop () {
+		public virtual string Drop () {
 			if (!this.PlayerHas) {
 				return Messages.RandomDontHave(this.TerseDesc());
 			}
 			this.PlayerHas = false;
+			string dropMsg;
+			if (this.actionMessages.TryGetValue("drop", out dropMsg)) {
+				return dropMsg;
+			}
 			return "Dropped.";
 		}
 
@@ -173,8 +185,14 @@ namespace finalproject {
 
 		public virtual string Look () {
 			// FIXME : implement this
+			string lookMsg;
+			if (this.actionMessages.TryGetValue("look", out lookMsg)) {
+				return lookMsg;
+			}
 			return Messages.RandomThingDeclarativeSinglular(this.TerseDesc());
 		}
+
+
 
 		public static bool operator == (string a, Item b) {
 			return b == a; }
