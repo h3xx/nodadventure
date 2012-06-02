@@ -1,0 +1,17 @@
+
+Ideas for puzzles:
+
+* HHGTG babel fish puzzle except for a cup of coffee, needed for extra speed to escape later, perhaps time-based speed increase. 3 sips and coffee runs out.
+
+
+Structure notes:
+
+Rooms/locations are objects with Collection class for items present. Also pointers for rooms adjacent.
+
+Take-able items should have a take message.
+
+Dictionary for item names and synonyms.
+
+Dictionary for verbs and synonyms.
+
+Dictionary for directions and synonyms.

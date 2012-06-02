@@ -1,0 +1,88 @@
+
+Puzzle 1: Gallons puzzle
+========================
+
+From Die Hard 3.
+
+Source: http://www.shvoong.com/exact-sciences/mathematics/1697283-die-hard-gallons-puzzle/
+
+Two empty containers:
+
+* one with five gallons capacity,
+
+* another with three gallons of capacity
+
+Player can only use these to achieve the four gallons of liquid weight filling
+them from an unlimited supply of liquid.
+
+Solution
+--------
+
+Fill the 5 gallons container to top, then drop it to fill the 3 gallons. The 5
+gallons container will now have two remaining gallons of water, and the 3
+gallon container will be filled.
+
+Now empty the 3 gallons container.
+
+After emptying it, pour the two gallons that are still in the 5 gallon
+container into the, now empty, 3 gallons container.
+
+The 3 gallon container now has two gallons of water, and the 5 gallons
+container is empty.
+
+Fill the 5 gallons container to top.
+
+Since the 3 gallons container still has two gallons of water, from our previous
+operation, it will only allow for 1 gallon more. Pour the 5 five gallons
+container into the 3 gallons one.
+
+1. Fill 5G
+
+    |-5-|
+    |   |    |   |
+    |   |    |   |
+    +---+    +---+
+      5G       3G
+
+2. Pour 5G into 3G
+
+    |   |
+    |   |    |-3-|
+    |-2-|    |   |
+    +---+    +---+
+      5G       3G
+
+3. Empty 3G
+
+    |   |
+    |   |    |   |
+    |-2-|    |   |
+    +---+    +---+
+      5G       3G
+
+4. Pour 5G into 3G
+
+    |   |
+    |   |    |   |
+    |   |    |-2-|
+    +---+    +---+
+      5G       3G
+
+5. Fill 5G
+
+    |-5-|
+    |   |    |   |
+    |   |    |-2-|
+    +---+    +---+
+      5G       3G
+
+6. Top off 3G with 5G, leaving 4 gallons in 5G.
+
+    |   |
+    |-4-|    |-3-|
+    |   |    |   |
+    +---+    +---+
+      5G       3G
+
+<!-- vi: ft=markdown
+-->
