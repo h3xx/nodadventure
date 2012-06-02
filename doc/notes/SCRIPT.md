@@ -19,12 +19,15 @@ for that matter.
 
 You look at the nightstand and see a picture of yourself holding a red herring.
 
-You search around the room for clues, but only find your toothbrush and a
-bottle of aspirin. You search your luggage but only find some
+You try the door, but it's locked. You look in the bathroom and find a towel.
+You search around the room, but only find your toothbrush and a bottle of
+aspirin. You search your luggage but only find some
 
 FIXME
 
-While you're sitting on the bed trying to remember where you were before here, the light on the nightstand goes out with an audible pop.
+While you're sitting on the bed trying to remember where you were before here,
+the light on the nightstand goes out with an audible pop. Then the hotel door
+opens.
 
 <!-- vi: ft=markdown spell
 -->
