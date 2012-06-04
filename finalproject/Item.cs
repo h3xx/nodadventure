@@ -13,7 +13,8 @@ namespace finalproject {
 			{"take", "Taken."},
 			{"drop", "Dropped."},
 		};
-		public bool PlayerHas = false;
+		public bool PlayerHas = false,
+					CanPickUp = true;
 
 		protected string type,
 					     attributes,
@@ -153,12 +154,16 @@ namespace finalproject {
 			if (this.PlayerHas) {
 				return Messages.RandomAlreadyHave(this.TerseDesc());
 			}
-			this.PlayerHas = true;
-			string pickupMsg;
-			if (this.actionMessages.TryGetValue("take", out pickupMsg)) {
-				return pickupMsg;
+			if (this.CanPickUp) {
+				this.PlayerHas = true;
+				string pickupMsg;
+				if (this.actionMessages.TryGetValue("take", out pickupMsg)) {
+					return pickupMsg;
+				}
+				return "Taken.";
 			}
-			return "Taken.";
+			// can't pick up
+			return this.MsgFailPickup();
 		}
 
 		public virtual string Drop () {
