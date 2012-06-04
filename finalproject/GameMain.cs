@@ -22,8 +22,22 @@ namespace finalproject {
 			//englishDemo();
 			//cmdDemo();
 			//pickupDemo();
-			actionDemo();
+			//actionDemo();
+			verboseRoomDemo();
 			holdTerminal();
+		}
+
+		private static void verboseRoomDemo () {
+			Room foo = new Room("Test Chamber",
+				"This is a small chamber. In the dim light you can see the walls "+
+				"expand and contract as if they were unstable. If you strain your "+
+				"ears you can just barely hear someone typing furiously on a keyboard."
+			);
+			foo.Exits.AddExit("ne", "doorway", foo);
+			foo.Exits.AddExit("nw", "doorway", foo);
+			foo.Exits.AddExit("se", "doorway", "leading to a small closet", foo);
+
+			Console.WriteLine(foo.Look(true));
 		}
 
 		private static void actionDemo () {
@@ -157,10 +171,10 @@ namespace finalproject {
 				invb
 			);
 
-			foo.AddExit("n", "doorway", bar);
-			foo.AddExit("u", "ladder", foo);
-			foo.AddExit("d", "ladder", foo);
-			foo.AddExit("s", foo);
+			foo.Exits.AddExit("n", "doorway", bar);
+			foo.Exits.AddExit("u", "ladder", foo);
+			foo.Exits.AddExit("d", "ladder", foo);
+			foo.Exits.AddExit("s", foo);
 
 			Console.WriteLine("Entering room...");
 			Console.WriteLine(foo.EnterRoom());
@@ -174,8 +188,6 @@ namespace finalproject {
 			Console.WriteLine(bar.TurnOnLight());
 			Console.WriteLine(bar.Look());
 
-
-			holdTerminal();
 		}
 
 		private static void holdTerminal () {
