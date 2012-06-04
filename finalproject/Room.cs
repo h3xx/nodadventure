@@ -12,7 +12,7 @@ namespace finalproject {
 		protected Inventory itemsHere;
 		protected string roomName, roomDesc;
 		protected bool playerHasVisited;
-		protected Exits exits;
+		public Exits Exits;
 		public string SpecialMessage;
 
 		public Room ()
@@ -46,22 +46,10 @@ namespace finalproject {
 			this.roomName = roomName;
 			this.roomDesc = roomDesc;
 			this.itemsHere = itemsHere;
-			this.exits = exits;
+			this.Exits = exits;
 		}
 
 		/***** CONSTRUCTION METHODS *****/
-
-		/**
-		 * @param dir
-		 *			Direction of new exit. Please use short directions like "u" (up) "nw" (northwest).
-		 */
-		public void AddExit (string dir, Room dest) {
-			this.AddExit(dir, null, dest);
-		}
-
-		public void AddExit (string dir, string method, Room dest) {
-			this.exits.AddExit(dir, method, dest);
-		}
 
 		/***** INTERACTION METHODS *****/
 
@@ -102,8 +90,8 @@ namespace finalproject {
 					roomString += "\n" + this.roomDesc;
 				}
 
-				if (this.exits != null) {
-					string exitsSentence = this.exits.ToString();
+				if (this.Exits != null) {
+					string exitsSentence = this.Exits.ToString();
 					if (exitsSentence != null) {
 						roomString += "\n" + exitsSentence;
 					}
