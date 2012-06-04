@@ -11,9 +11,13 @@ namespace finalproject {
 		: Room {
 
 		private Toilet toilet = new Toilet();
+		private static string lookString = "You are standing in a small bathroom. It is impeccably clean, but the lights seem to be underpowered. You are having a hard time seeing everything.";
 
 		public MyHotelRoomBathroom ()
-			: base ("Bathroom") {
+			: base (
+				"Bathroom",
+				lookString
+			) {
 
 			this.itemsHere = new Inventory(
 				new List<Item>() {
