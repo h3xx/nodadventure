@@ -37,7 +37,9 @@ namespace finalproject {
 
 		private static List<string> declarativesSingular = new List<string>() {
 			"There is",
-			"You see here",
+			"There is",
+			"You see",
+			"You see",
 			"You can see",
 		};
 
