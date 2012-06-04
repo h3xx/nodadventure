@@ -6,11 +6,12 @@ WARRANTY, to the extent permitted by law.
 */
 namespace finalproject {
 	using System;
+	using System.Collections.Generic;
 	class AlarmClock
 		: Item {
 		public AlarmClock ()
 			: base("alarm clock", "small red",
-			      new List<string>() {"clock", "watch", "alarm"}) {
+			      new List<string>() {"clock", "watch", "alarm", "time"}) {
 			this.CanPickUp = false;
 		}
 	}
