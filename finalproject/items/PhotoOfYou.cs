@@ -13,7 +13,6 @@ namespace finalproject {
 
 		public PhotoOfYou ()
 			: base("photo") {
-			this.actionMessages.Remove("look");
 			this.actionMessages.Add("look", lookstring);
 		}
 		

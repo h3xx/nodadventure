@@ -65,20 +65,29 @@ namespace finalproject {
 					return "You aren't holding anything.";
 				}
 				invdesc = "You are carrying:\n";
+				// note: at this point, this.items won't be null OR empty
+				foreach (Item i in this.items) {
+					invdesc += "  " + i.LongDesc(true) + "\n";
+				}
 			} else {
 				// room's inventory, nothing here, so don't print anything
 				if (this.IsEmpty()) {
 					return "";
 				}
-				invdesc = "You see here:\n";
+
+				string youSeeHere = "";
+				foreach (Item i in this.items) {
+					if (i.CanPickUp || i.IsImportant) {
+						youSeeHere += "  " + i.LongDesc(true) + "\n";
+					}
+				}
+
+				if (youSeeHere.Length > 0) {
+					invdesc = "You see here:\n" + youSeeHere;
+				}
 			}
 
-			// note: at this point, this.items won't be null OR empty
-			foreach (Item i in this.items) {
-				invdesc += "  " + i.LongDesc(true) + "\n";
-			}
-
-			return invdesc;
+			return null;
 		}
 	}
 }

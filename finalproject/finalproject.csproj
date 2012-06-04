@@ -39,20 +39,38 @@
     <Compile Include="Hint.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="GallonPuzzle.cs" />
-    <Compile Include="Bucket.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="English.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="Exits.cs" />
     <Compile Include="Messages.cs" />
-    <Compile Include="Closet.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Commands.cs" />
     <Compile Include="Synonyms.cs" />
-    <Compile Include="PhotoOfYou.cs" />
     <Compile Include="Toolbox.cs" />
     <Compile Include="MediaPlayer.cs" />
-    <Compile Include="AlarmClock.cs" />
+    <Compile Include="rooms\MyHotelRoom.cs" />
+    <Compile Include="rooms\HallwayFloorTwoMid.cs" />
+    <Compile Include="rooms\MyHotelRoomBathroom.cs" />
+    <Compile Include="items\Toothbrush.cs" />
+    <Compile Include="items\Aspirin.cs" />
+    <Compile Include="items\PhotoOfYou.cs" />
+    <Compile Include="items\Bucket.cs" />
+    <Compile Include="rooms\Closet.cs" />
+    <Compile Include="items\AlarmClock.cs" />
+    <Compile Include="RoomLayout.cs" />
+    <Compile Include="items\SmallKey.cs" />
+    <Compile Include="Triggers.cs" />
+    <Compile Include="rooms\HallwayFloorTwoWest.cs" />
+    <Compile Include="items\scenery\Carpet.cs" />
+    <Compile Include="items\scenery\Sconce.cs" />
+    <Compile Include="items\scenery\Toilet.cs" />
+    <Compile Include="items\scenery\Door.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="rooms\" />
+    <Folder Include="items\" />
+    <Folder Include="items\scenery\" />
+  </ItemGroup>
 </Project>

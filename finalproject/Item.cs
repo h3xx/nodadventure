@@ -14,7 +14,8 @@ namespace finalproject {
 			{"drop", "Dropped."},
 		};
 		public bool PlayerHas = false,
-					CanPickUp = true;
+					CanPickUp = true,
+					IsImportant = false;
 
 		protected string type,
 					     attributes,
@@ -147,6 +148,13 @@ namespace finalproject {
 
 		public virtual string PerformAction (string act) {
 			// FIXME : implement this
+			string baseSyn = Synonyms.GetVerbBaseSynonym(act);
+			if (baseSyn == "take") {
+				return this.Take();
+			}
+			if (baseSyn == "drop") {
+				return this.Drop();
+			}
 			return Messages.RandomSilly(this.TerseDesc());
 		}
 

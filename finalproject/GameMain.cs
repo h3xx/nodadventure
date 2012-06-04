@@ -23,8 +23,33 @@ namespace finalproject {
 			//cmdDemo();
 			//pickupDemo();
 			//actionDemo();
-			verboseRoomDemo();
+			//verboseRoomDemo();
+			verboseExitDemo();
 			holdTerminal();
+		}
+
+		private static void verboseExitDemo () {
+			Room myroom = new MyHotelRoom(); 
+			Room myBathroom = new MyHotelRoomBathroom();
+
+			// connect room to bathroom
+			myroom.Exits.AddExit("e", "doorway", "leading to a small bathroom", myBathroom);
+			myBathroom.Exits.AddExit("w", "doorway", "leading back into your hotel room", myroom);
+
+			Room hallwayMid = new HallwayFloorTwoMid();
+
+			// connect room to hallway
+			myroom.Exits.AddExit("n", "door", hallwayMid);
+			hallwayMid.Exits.AddExit("s", "door", myroom);
+
+			Room hallwayWest = new HallwayFloorTwoWest();
+
+			// connect mid <=> west hallways
+			hallwayWest.Exits.AddExit("e", null, "From here the hallway continues east.", hallwayMid);
+			hallwayMid.Exits.AddExit("w", null, "From here the hallway continues east and west.", hallwayWest);
+
+			Console.WriteLine(hallwayMid.Look(true));
+
 		}
 
 		private static void verboseRoomDemo () {

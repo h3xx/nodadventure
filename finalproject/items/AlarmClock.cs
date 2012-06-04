@@ -10,9 +10,19 @@ namespace finalproject {
 	class AlarmClock
 		: Item {
 		public AlarmClock ()
-			: base("alarm clock", "small red",
-			      new List<string>() {"clock", "watch", "alarm", "time"}) {
+			: base(
+				"alarm clock",
+				"small red",
+			    new List<string>() {
+					"clock",
+					"watch",
+					"alarm",
+					"time",
+				}
+			) {
+
 			this.CanPickUp = false;
+
 		}
 	}
 }

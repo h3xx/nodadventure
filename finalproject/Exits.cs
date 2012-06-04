@@ -40,9 +40,6 @@ namespace finalproject {
 		}
 
 		public void AddExit (string dir, string method, string verbose, Room dest) {
-			if (method == null) {
-				method = "exit";
-			}
 
 			// create structures if they don't exist
 			if (this.exits == null) {
@@ -140,7 +137,11 @@ namespace finalproject {
 					    this.exitMethod.TryGetValue(shortDir, out method)) {
 
 						dirDesc = directionToLong(shortDir);
-						exitsSentence += Messages.RandomDeclarativeSingular() + " " + English.Articalize(method) + " here " + verbose + ".";
+						if (method != null) {
+							exitsSentence += Messages.RandomDeclarativeSingular() + " " + English.Articalize(method) + " here " + verbose + ".";
+						} else {
+							exitsSentence += verbose;
+						}
 					} // else we're fucked
 				}
 			}

@@ -47,13 +47,16 @@ namespace finalproject {
 			{"inventory", new List<string>() {"i", "inv"}},
 			{"look", new List<string>() {"look at", "examine", "l"}},
 			{"speak", new List<string>() {"say"}},
-			{"put", new List<string>() {"place", "set"}},
+			{"put", new List<string>() {"place", "set", "drop"}},
 			{"hit", new List<string>() {"strike", "punch"}},
 			{"throw", new List<string>() {"toss", "chuck", "pitch"}},
+			{"search", new List<string>() {"sift"}},
 			// just mark as a verb
 			{"use", null},
 			{"read", null},
 			{"kick", null},
+			{"unlock", null},
+			{"lock", null},
 		 	// XXX : in order to avoid conflicts, please search from most verbose to least verbose when choosing synonyms
 			{"walk", null},
 			{"go", null},
@@ -61,7 +64,7 @@ namespace finalproject {
 
 		public readonly static List<string> TransitiveVerbs = new List<string>() {
 			// note: only use the root synonyms from VerbSynonyms
-			"kick", "use", "read", "put", "take", "go", "hit", "walk",
+			"kick", "use", "read", "put", "take", "go", "hit", "walk", "lock", "unlock",
 		};
 
 		public readonly static List<string> Prepositions = new List<string>() {

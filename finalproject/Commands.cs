@@ -9,14 +9,6 @@ namespace finalproject {
 	using System.Collections.Generic;
 	using System.Text.RegularExpressions;
 	class Commands {
-		private static List<string> transitiveVerbs = new List<string>() {
-			"take",
-			"pull",
-			"push",
-			"eat",
-			"drop",
-			"read",
-		};
 
 		private static Regex wordSplit = new Regex("\\s+"),
 							 whiteSpace = new Regex("(^\\s+|\\s+$)"),
