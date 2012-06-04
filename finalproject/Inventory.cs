@@ -17,6 +17,10 @@ namespace finalproject {
 		public Inventory (bool isPlayerInventory)
 			: this (isPlayerInventory, new List<Item>()) {}
 
+		public Inventory (List<Item> items)
+			: this (false, items) {
+		}
+
 		public Inventory (bool isPlayerInventory, List<Item> items) {
 			this.isPlayerInventory = isPlayerInventory;
 			this.items = items;
