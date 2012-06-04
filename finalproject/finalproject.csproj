@@ -51,6 +51,7 @@
     <Compile Include="Synonyms.cs" />
     <Compile Include="PhotoOfYou.cs" />
     <Compile Include="Toolbox.cs" />
+    <Compile Include="MediaPlayer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
