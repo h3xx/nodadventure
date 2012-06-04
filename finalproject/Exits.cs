@@ -25,16 +25,21 @@ namespace finalproject {
 		private Dictionary<string, Room> exits;
 		private Dictionary<string, string> exitMethod;
 		private Dictionary<string, List<string>> exitGroups;
+		private Dictionary<string, string> exitVerbose;
 
 		public bool HasExit (string shortDir) {
 			return this.exits.ContainsKey(shortDir);
 		}
 
 		public void AddExit (string dir, Room dest) {
-			this.AddExit(dir, "exit", dest);
+			this.AddExit(dir, "exit", null, dest);
 		}
 
 		public void AddExit (string dir, string method, Room dest) {
+			this.AddExit(dir, method, null, dest);
+		}
+
+		public void AddExit (string dir, string method, string verbose, Room dest) {
 			if (method == null) {
 				method = "exit";
 			}
@@ -46,24 +51,40 @@ namespace finalproject {
 			if (this.exitMethod == null) {
 				this.exitMethod = new Dictionary<string, string>();
 			}
-			if (this.exitGroups == null) {
-				this.exitGroups = new Dictionary<string, List<string>>();
-			}
 
 			// associate exit, direction and method
 			this.exits.Add(dir, dest);
 			this.exitMethod.Add(dir, method);
 
 			// add grouping by method for pretty English
-			List<string> similarExits;
-			if (this.exitGroups.TryGetValue(method, out similarExits)) {
-				similarExits.Add(dir);
+			if (verbose != null) {
+				if (this.exitVerbose == null) {
+					this.exitVerbose = new Dictionary<string, string>();
+				}
+				this.exitVerbose.Add(dir, verbose);
 			} else {
-				similarExits = new List<string>() {
-					dir
-				};
-				this.exitGroups.Add(method, similarExits);
+				if (this.exitGroups == null) {
+					this.exitGroups = new Dictionary<string, List<string>>();
+				}
+				// similar exits
+				List<string> similarExits;
+				if (this.exitGroups.TryGetValue(method, out similarExits)) {
+					similarExits.Add(dir);
+				} else {
+					similarExits = new List<string>() {
+						dir
+					};
+					this.exitGroups.Add(method, similarExits);
+				}
 			}
+		}
+
+		private static string directionToLong (string shortDir) {
+			string dirDesc;
+			if (directionLongs.TryGetValue(shortDir, out dirDesc)) {
+				return dirDesc;
+			}
+			return shortDir;
 		}
 
 		// new stringification method, reads better
@@ -74,39 +95,54 @@ namespace finalproject {
 			}
 
 			string exitsSentence = "";
-			foreach (string eMethod in this.exitGroups.Keys) {
-				List<string> shortDirs;
-				if (this.exitGroups.TryGetValue(eMethod, out shortDirs)) {
-					if (shortDirs.Count != 0) {
-						if (shortDirs.Count > 1) {
-							exitsSentence += Messages.RandomDeclarativePlural() + " " + English.Plural(eMethod) + " leading";
-						} else {
-							exitsSentence += Messages.RandomDeclarativeSingular() + " " + English.Articalize(eMethod) + " leading";
-						}
-						bool inList = false;
 
-						int dirIdx = 0;
-						foreach (string shortDir in shortDirs) {
-							// look up how the exit is presented
-							string dirDesc;
-							if (directionLongs.TryGetValue(shortDir, out dirDesc)) {
+			// grouped exits
+			if (this.exitGroups != null) {
+				foreach (string eMethod in this.exitGroups.Keys) {
+					List<string> shortDirs;
+					if (this.exitGroups.TryGetValue(eMethod, out shortDirs)) {
+						if (shortDirs.Count != 0) {
+							if (shortDirs.Count > 1) {
+								exitsSentence += Messages.RandomDeclarativePlural() + " " + English.Plural(eMethod) + " leading";
+							} else {
+								exitsSentence += Messages.RandomDeclarativeSingular() + " " + English.Articalize(eMethod) + " leading";
+							}
+							bool inList = false;
+	
+							int dirIdx = 0;
+							foreach (string shortDir in shortDirs) {
+								// look up how the exit is presented
+								string dirDesc = directionToLong(shortDir);
 								if (inList) {
 									exitsSentence += ",";
 								}
 								exitsSentence += " " + dirDesc;
 								inList = true;
+								// TODO : fix this convolution
+								if (1 + ++dirIdx == shortDirs.Count) {
+									// TODO : leave the Oxford Comma in...?
+									exitsSentence += " and";
+									inList = false; // no more commas needed
+								}
 							}
-							// TODO : fix this convolution
-							if (1 + ++dirIdx == shortDirs.Count) {
-								// TODO : leave the Oxford Comma in...?
-								exitsSentence += " and";
-								inList = false; // no more commas needed
-							}
+	
+							exitsSentence += ". ";
 						}
+					} // else we're fucked
+				}
+			}
 
-						exitsSentence += ". ";
-					}
-				} // else we're fucked
+			// verbose exits
+			if (this.exitVerbose != null) {
+				foreach (string shortDir in this.exitVerbose.Keys) {
+					string verbose, dirDesc, method;
+					if (this.exitVerbose.TryGetValue(shortDir, out verbose) &&
+					    this.exitMethod.TryGetValue(shortDir, out method)) {
+
+						dirDesc = directionToLong(shortDir);
+						exitsSentence += Messages.RandomDeclarativeSingular() + " " + English.Articalize(method) + " here " + verbose + ".";
+					} // else we're fucked
+				}
 			}
 
 			return exitsSentence;
