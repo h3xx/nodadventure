@@ -18,6 +18,7 @@ namespace finalproject {
 			{"creepy2",	"creepy2.wav"},
 		};
 		private static readonly SoundPlayer sp = new SoundPlayer();
+
 		static bool PlaySound (string soundName) {
 			sp.Stop();
 			string wavLocation;
