@@ -108,8 +108,18 @@ namespace finalproject {
 			return roomString;
 		}
 
-		public Room Go (string dir) {
-			return null;
+		public Room Go (string shortDir, out string msg) {
+			if (this.Exits.HasExit(shortDir)) {
+				if (!this.Exits.ExitIsLocked(shortDir)) {
+					return this.Exits.GetExit(shortDir);
+				} else {
+					msg = Messages.RandomLocked();
+					return null;
+				}
+			} else {
+				msg = Messages.RandomCantExit();
+				return null;
+			}
 		}
 
 		public override string ToString () {
