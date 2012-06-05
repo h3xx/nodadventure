@@ -41,11 +41,15 @@ namespace finalproject {
 				this.synonyms.Add(roomNr+ " door");
 				this.actionMessages.Add("read", "\""+Toolbox.UcFirst(roomNr)+".\"");
 				this.actionMessages.Add("open", "Locked.");
+				this.actionMessages.Add("look", "It's a door, it's made of wood. You see a small plaque on the door that reads \""+Toolbox.UcFirst(roomNr)+".\"");
+			} else {
+				this.actionMessages.Add("look", "It's a door, it's made of wood. What else do you want me to say?");
 			}
 
 			if (addSyns != null) {
 				this.synonyms.AddRange(addSyns);
 			}
+
 		}
 
 		public override string MsgFailPickup () {

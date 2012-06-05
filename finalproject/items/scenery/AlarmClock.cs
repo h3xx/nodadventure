@@ -41,6 +41,7 @@ namespace finalproject {
 		}
 
 		public override string Look () {
+			// use this.actionMessages to look up the string.
 			return base.Look() + " " + this.Read();
 
 		}
