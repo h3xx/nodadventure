@@ -21,6 +21,7 @@ namespace finalproject {
 				"carpet",
 				"dull red",
 				new List<string>() {
+				    "floor",
 					"rug",
 					"area rug",
 				}
