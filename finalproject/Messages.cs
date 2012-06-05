@@ -86,6 +86,11 @@ namespace finalproject {
 			"It's locked. Perhaps the key is around here somewhere.",
 		};
 
+		private static List<string> sillyVerb = new List<string>() {
+			"That's a silly thing to {0}.",
+			"What a silly thing to {0}.",
+		};
+
 		private static string selectRandom (List<string> dict) {
 			return dict[rng.Next(dict.Count-1)];
 		}
@@ -137,6 +142,10 @@ namespace finalproject {
 
 		public static string RandomLocked () {
 			return selectRandom(locked);
+		}
+
+		public static string RandomSillyVerb (string verb) {
+			return formatRandom(sillyVerb, verb);
 		}
 	}
 }
