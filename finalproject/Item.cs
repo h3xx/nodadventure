@@ -155,7 +155,19 @@ namespace finalproject {
 			if (baseSyn == "drop") {
 				return this.Drop();
 			}
+			if (baseSyn == "read") {
+				return this.Read();
+			}
 			return Messages.RandomSilly(this.TerseDesc());
+		}
+
+		public virtual string Read () {
+			// FIXME : implement this
+			string readMsg;
+			if (this.actionMessages.TryGetValue("read", out readMsg)) {
+				return readMsg;
+			}
+			return Messages.RandomSillyVerb("read");
 		}
 
 		public virtual string Take () {
