@@ -155,6 +155,39 @@ namespace finalproject {
 			return null;
 		}
 
+		public static List<Item> GetCommandItems (string cmd, Room currentRoom, Inventory playerInventory) {
+			return GetCommandItems(splitCommand(cmd), currentRoom, playerInventory);
+		}
+
+		public static List<Item> GetCommandItems (string[] words, Room currentRoom, Inventory playerInventory) {
+			List<string> tryWordCombinations = allWordCombinations(words);
+			tryWordCombinations.Sort(
+				delegate(string a, string b) {
+					//return a.Length.CompareTo(b.Length);
+					// longest first
+					return b.Length.CompareTo(a.Length);
+				}
+			);
+
+			List<Item> matches = new List<Item>();
+			foreach (string phrase in tryWordCombinations) {
+				Console.WriteLine("trying combination: {0}", phrase);
+				Item foundItem = playerInventory.GetItem(phrase);
+				if (foundItem != null) {
+					Console.WriteLine("Found it!");
+					matches.Add(foundItem);
+				}
+
+				foundItem = currentRoom.GetItem(phrase);
+				if (foundItem != null) {
+					matches.Add(foundItem);
+				}
+			}
+
+			return matches;
+
+		}
+
 		public static List<string[]> GetCommandParts (string cmd) {
 			return GetCommandParts(splitCommand(cmd));
 		}
@@ -173,10 +206,15 @@ namespace finalproject {
 			parts.Add(partFound); // (even if it's null)
 
 			// preposition
-			partFound = GetCommandPreposition(words);
+			if (words.Length > 0) {
+				partFound = GetCommandPreposition(words);
+			} else {
+				partFound = null;
+			}
 			parts.Add(partFound); // (even if it's null)
 
 			// FIXME : moar parts of sentence
+
 
 			return parts;
 		}
