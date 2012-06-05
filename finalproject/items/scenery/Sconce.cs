@@ -25,6 +25,8 @@ namespace finalproject {
 					"fixture",
 					"light fixture",
 					"light socket",
+					"light bulb",
+					"lightbulb",
 					"socket",
 					"chandelier",
 				}
