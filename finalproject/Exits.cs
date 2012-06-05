@@ -26,6 +26,7 @@ namespace finalproject {
 		private Dictionary<string, string> exitMethod;
 		private Dictionary<string, List<string>> exitGroups;
 		private Dictionary<string, string> exitVerbose;
+		private Dictionary<string, bool> lockedExit;
 
 		public bool HasExit (string shortDir) {
 			return this.exits.ContainsKey(shortDir);
@@ -74,6 +75,33 @@ namespace finalproject {
 					this.exitGroups.Add(method, similarExits);
 				}
 			}
+		}
+
+		public bool ExitIsLocked (string shortDir) {
+			if (this.lockedExit == null) return false;
+
+			bool state;
+			if (this.lockedExit.TryGetValue(shortDir, out state)) {
+				return state;
+			}
+			return false;
+		}
+
+		public void LockExit (string shortDir) {
+			this.setLock(shortDir, true);
+		}
+
+		public void LockExit (string shortDir) {
+			this.setLock(shortDir, false);
+		}
+
+		private void setLock (string shortDir, bool state) {
+			if (this.lockedExit == null) {
+				this.lockedExit = new Dictionary<string, bool>();
+			}
+
+			this.lockedExit.Remove(shortDir);
+			this.lockedExit.Add(shortDir, state);
 		}
 
 		private static string directionToLong (string shortDir) {
