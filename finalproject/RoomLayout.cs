@@ -7,11 +7,13 @@ WARRANTY, to the extent permitted by law.
 namespace finalproject {
 	using System;
 	class RoomLayout {
-		public Room startingPoint;
+		public Room StartingPoint;
 
 		public RoomLayout () {
 			Room myroom = new MyHotelRoom(); 
 			Room myBathroom = new MyHotelRoomBathroom();
+
+			this.StartingPoint = myroom;
 
 			// connect room to bathroom
 			myroom.Exits.AddExit("e", "doorway", "leading to a small bathroom", myBathroom);
@@ -29,7 +31,11 @@ namespace finalproject {
 			hallwayWest.Exits.AddExit("e", null, "From here the hallway continues east.", hallwayMid);
 			hallwayMid.Exits.AddExit("w", null, "From here the hallway continues east and west.", hallwayWest);
 
-			this.startingPoint = myroom;
+			Room hallwayEast = new HallwayFloorTwoEast();
+
+			// connect mid <=> east hallways
+			hallwayMid.Exits.AddExit("e", null, "From here the hallway continues east.", hallwayMid);
+			hallwayEast.Exits.AddExit("w", null, "From here the hallway continues east and west.", hallwayWest);
 		}
 	}
 }
