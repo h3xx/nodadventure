@@ -66,6 +66,7 @@
     <Compile Include="items\scenery\Sconce.cs" />
     <Compile Include="items\scenery\Toilet.cs" />
     <Compile Include="items\scenery\Door.cs" />
+    <Compile Include="rooms\HallwayFloorTwoEast.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
