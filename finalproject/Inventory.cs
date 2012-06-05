@@ -43,7 +43,7 @@ namespace finalproject {
 			}
 
 			foreach (Item i in this.items) {
-				if (i == itemdesc) {
+				if (i.MatchesSynonym(itemdesc)) {
 					return i;
 				}
 			}

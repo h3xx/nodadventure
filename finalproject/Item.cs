@@ -205,8 +205,14 @@ namespace finalproject {
 			return Messages.RandomThingDeclarativeSinglular(this.TerseDesc());
 		}
 
+		public bool MatchesSynonym (string syn) {
+			if (syn == null) return false;
+
+			return this.synonyms.Contains(syn);
+		}
 
 
+		/* (this is a bad idea)
 		public static bool operator == (string a, Item b) {
 			return b == a; }
 		public static bool operator != (string a, Item b) {
@@ -216,6 +222,7 @@ namespace finalproject {
 		public static bool operator == (Item a, string b) {
 			return b != null && a.synonyms.Contains(b.ToLower());
 		}
+		*/
 
 		public override string ToString () {
 			return this.LongDesc();
