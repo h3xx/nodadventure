@@ -57,7 +57,6 @@
     <Compile Include="items\PhotoOfYou.cs" />
     <Compile Include="items\Bucket.cs" />
     <Compile Include="rooms\Closet.cs" />
-    <Compile Include="items\AlarmClock.cs" />
     <Compile Include="RoomLayout.cs" />
     <Compile Include="items\SmallKey.cs" />
     <Compile Include="Triggers.cs" />
@@ -67,6 +66,8 @@
     <Compile Include="items\scenery\Toilet.cs" />
     <Compile Include="items\scenery\Door.cs" />
     <Compile Include="rooms\HallwayFloorTwoEast.cs" />
+    <Compile Include="Globals.cs" />
+    <Compile Include="items\scenery\AlarmClock.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
