@@ -9,6 +9,7 @@ namespace finalproject {
 	using System.Collections.Generic;
 	class Carpet
 		: Item {
+
 		private int triedPickup = 0;
 		private static List<string> failPickupMsgs = new List<string>() {
 			"You pull on the carpet and a small handful of fuzz comes off.",

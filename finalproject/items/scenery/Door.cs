@@ -9,6 +9,7 @@ namespace finalproject {
 	using System.Collections.Generic;
 	class Door
 		: Item {
+
 		private int triedPickup = 0;
 		private static List<string> failPickupMsgs = new List<string>() {
 			"You can't get your arms around it.",
