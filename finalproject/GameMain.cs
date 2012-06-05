@@ -49,6 +49,7 @@ namespace finalproject {
 				//"steal",
 				"take small bucket",
 			};
+			Console.WriteLine(rms.StartingPoint.ToString());
 			List<Item> it;
 			string[] ve;
 			foreach (string c in cmds) {
