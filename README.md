@@ -23,5 +23,7 @@ Copyright (C) 2012 Dan Church.
 License (code) GPLv3+: [GNU GPL version 3 or
 later](http://gnu.org/licenses/gpl.html).
 
+Licene (media) CC BY-NC-SA 3.0: [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-nc-sa/3.0/).
+
 This is free software: you are free to change and redistribute it. There is NO
 WARRANTY, to the extent permitted by law.
