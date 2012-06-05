@@ -43,14 +43,14 @@ namespace finalproject {
 			{"go d",  new List<string>() {"d", "down", "walk d", "walk down", "climb d", "climb down"}},
 
 			// *** ACTIONS ***
-			{"take",  new List<string>() {"get", "pick up", "steal", "acquire"}},
+			{"take",  new List<string>() {"get", "pick up", "pick", "steal", "acquire"}},
 			{"inventory", new List<string>() {"i", "inv"}},
 			{"look", new List<string>() {"look at", "examine", "l"}},
 			{"speak", new List<string>() {"say"}},
 			{"put", new List<string>() {"place", "set", "drop"}},
 			{"hit", new List<string>() {"strike", "punch"}},
 			{"throw", new List<string>() {"toss", "chuck", "pitch"}},
-			{"search", new List<string>() {"sift"}},
+			{"search", new List<string>() {"sift", "feel", "pick through"}},
 			// just mark as a verb
 			{"use", null},
 			{"read", null},
