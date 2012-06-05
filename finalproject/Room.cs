@@ -65,7 +65,7 @@ namespace finalproject {
 			return roomDesc;
 		}
 
-		public Item PickupItem (string itemdesc) {
+		public Item GetItem (string itemdesc) {
 			if (this.itemsHere == null) {
 				return null;
 			}
