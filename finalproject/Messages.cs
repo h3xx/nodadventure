@@ -71,6 +71,21 @@ namespace finalproject {
 			"You don't see that item among your possessions.",
 		};
 
+		private static List<string> cantExit = new List<string>() {
+			"You see no exit in that direction.",
+			"You see no exit in that direction.",
+			"You bump into a wall. Ouch.",
+			"You can't exit that way.",
+			"You can't go that way.",
+		};
+
+		private static List<string> locked = new List<string>() {
+			"Locked.",
+			"Locked.",
+			"It's locked.",
+			"It's locked. Perhaps the key is around here somewhere.",
+		};
+
 		private static string selectRandom (List<string> dict) {
 			return dict[rng.Next(dict.Count-1)];
 		}
@@ -116,7 +131,13 @@ namespace finalproject {
 			return selectRandom(failGeneric);
 		}
 
+		public static string RandomCantExit () {
+			return selectRandom(cantExit);
+		}
 
+		public static string RandomLocked () {
+			return selectRandom(locked);
+		}
 	}
 }
 
