@@ -97,11 +97,13 @@ namespace finalproject {
 
 		private void setLock (string shortDir, bool state) {
 			if (this.lockedExit == null) {
-				this.lockedExit = new Dictionary<string, bool>();
+				this.lockedExit = new Dictionary<string, bool>() {
+					{shortDir, state},
+				};
+			} else {
+				this.lockedExit.Remove(shortDir);
+				this.lockedExit.Add(shortDir, state);
 			}
-
-			this.lockedExit.Remove(shortDir);
-			this.lockedExit.Add(shortDir, state);
 		}
 
 		private static string directionToLong (string shortDir) {
