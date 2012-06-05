@@ -214,7 +214,7 @@ namespace finalproject {
 		public static bool operator != (Item a, string b) {
 			return !(a == b); }
 		public static bool operator == (Item a, string b) {
-			return a.synonyms.Contains(b.ToLower());
+			return b != null && a.synonyms.Contains(b.ToLower());
 		}
 
 		public override string ToString () {
