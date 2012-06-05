@@ -68,6 +68,7 @@
     <Compile Include="rooms\HallwayFloorTwoEast.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="items\scenery\AlarmClock.cs" />
+    <Compile Include="items\scenery\LightSwitch.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

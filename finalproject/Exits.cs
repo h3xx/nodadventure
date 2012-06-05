@@ -99,7 +99,7 @@ namespace finalproject {
 			this.setLock(shortDir, true);
 		}
 
-		public void LockExit (string shortDir) {
+		public void UnlockExit (string shortDir) {
 			this.setLock(shortDir, false);
 		}
 

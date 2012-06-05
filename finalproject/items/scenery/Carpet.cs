@@ -32,6 +32,7 @@ namespace finalproject {
 			this.CanPickUp = false;
 
 			this.actionMessages.Add("look", "You are standing on dull red carpet, worn down throughout the years.");
+			this.actionMessages.Add("read", "There's nothing to read on it.");
 		}
 
 		public override string MsgFailPickup () {

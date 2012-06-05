@@ -37,7 +37,7 @@ namespace finalproject {
 		}
 
 		private string clockface () {
-			Globals.CurrentGlobals.Time.ToString("hh:mm tt");
+			return Globals.CurrentGlobals.Time.ToString("hh:mm tt");
 		}
 
 		public override string Look () {

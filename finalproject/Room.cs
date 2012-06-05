@@ -111,6 +111,7 @@ namespace finalproject {
 		public Room Go (string shortDir, out string msg) {
 			if (this.Exits.HasExit(shortDir)) {
 				if (!this.Exits.ExitIsLocked(shortDir)) {
+					msg = null;
 					return this.Exits.GetExit(shortDir);
 				} else {
 					msg = Messages.RandomLocked();

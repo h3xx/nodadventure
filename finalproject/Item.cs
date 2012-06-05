@@ -170,6 +170,15 @@ namespace finalproject {
 			return Messages.RandomSillyVerb("read");
 		}
 
+		public virtual string UseIntransitive () {
+			// FIXME : implement this
+			string useMsg;
+			if (this.actionMessages.TryGetValue("use", out useMsg)) {
+				return useMsg;
+			}
+			return Messages.RandomSillyVerb("use");
+		}
+
 		public virtual string Take () {
 			if (this.PlayerHas) {
 				return Messages.RandomAlreadyHave(this.TerseDesc());
