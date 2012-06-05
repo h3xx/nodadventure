@@ -16,12 +16,13 @@ namespace finalproject {
 			"Seriously, it won't come up.",
 			"Why don't you try exploring more?",
 		};
+
 		public Carpet ()
 			: base(
 				"carpet",
 				"dull red",
 				new List<string>() {
-				    "floor",
+					"floor",
 					"rug",
 					"area rug",
 				}
