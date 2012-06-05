@@ -24,8 +24,48 @@ namespace finalproject {
 			//pickupDemo();
 			//actionDemo();
 			//verboseRoomDemo();
-			verboseExitDemo();
+			//verboseExitDemo();
+			movementDemo();
 			holdTerminal();
+		}
+
+		private static void movementDemo () {
+			Inventory plr = new Inventory(true, new List<Item>() {
+				new Bucket(3),
+				new Bucket(5),
+			});
+
+			RoomLayout rms = new RoomLayout();
+
+
+			string[] cmds = new string[] {
+				//"n",
+				//"e",
+				//"go n",
+				//"look",
+				//"search",
+				//"pick",
+				//"take",
+				//"steal",
+				"take small bucket",
+			};
+			List<Item> it;
+			string[] ve;
+			foreach (string c in cmds) {
+				ve = Commands.GetCommandVerb(c);
+				it = Commands.GetCommandItems(c,rms.StartingPoint, plr);
+				Console.WriteLine("in: {0}", c);
+				if (ve != null) {
+					Console.WriteLine("  verb: {0} ({1})", ve[0], ve[1]);
+				} else {
+					Console.WriteLine("  (unrecognized verb)");
+				}
+				if (it.Count > 0) {
+					Console.WriteLine("  item: {0}", it[0]);
+				} else {
+					Console.WriteLine("  (unrecognized item)");
+				}
+			}
 		}
 
 		private static void verboseExitDemo () {
