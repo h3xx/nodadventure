@@ -20,7 +20,12 @@ namespace finalproject {
 		};
 
 		private string roomNr;
+
 		public Door (string roomNr)
+			: this (roomNr, null) {
+		}
+
+		public Door (string roomNr, string[] addSyns)
 			: base(
 				"door",
 				new List<string>() {
@@ -35,6 +40,10 @@ namespace finalproject {
 				this.synonyms.Add(roomNr+ " door");
 				this.actionMessages.Add("read", "\""+Toolbox.UcFirst(roomNr)+".\"");
 				this.actionMessages.Add("open", "Locked.");
+			}
+
+			if (addSyns != null) {
+				this.synonyms.AddRange(addSyns);
 			}
 		}
 

@@ -12,8 +12,22 @@ namespace finalproject {
 		private static string lookString = "You are standing in a dimly-lit hallway.";
 		private Sconce lights = new Sconce();
 		private Carpet carpet = new Carpet();
-		private Door doorSouth = new Door("room 202");
-		private Door doorNorth = new Door("room 205");
+		private Door doorSouth = new Door(
+			"room 202",
+			new string[] {
+				"south door",
+				"south doorway",
+				"202",
+			}
+		);
+		private Door doorNorth = new Door(
+			"room 205",
+			new string[] {
+				"north door",
+				"north doorway",
+				"205",
+			}
+		);
 		public HallwayFloorTwoMid ()
 			: base(
 				"Second Floor Hallway",
