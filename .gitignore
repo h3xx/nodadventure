@@ -3,6 +3,9 @@ obj
 *~
 *.exe
 
+# Dia files
+*.dia.autosave
+
 # MonoDevelop files
 *.userprefs
 *.pidb
