@@ -32,6 +32,14 @@ namespace finalproject {
 			return this.exits.ContainsKey(shortDir);
 		}
 
+		public Room GetExit (string shortDir) {
+			Room ex;
+			if (this.exits.TryGetValue(shortDir, out ex)) {
+				return ex;
+			}
+			return null;
+		}
+
 		public void AddExit (string dir, Room dest) {
 			this.AddExit(dir, "exit", null, dest);
 		}
