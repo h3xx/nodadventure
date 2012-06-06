@@ -51,6 +51,8 @@ namespace finalproject {
 			{"hit", new List<string>() {"strike", "punch"}},
 			{"throw", new List<string>() {"toss", "chuck", "pitch"}},
 			{"search", new List<string>() {"sift", "feel", "pick through"}},
+			{"turn on", new List<string>() {"flip on", "switch on"}},
+			{"turn off", new List<string>() {"flip off", "switch off"}},
 			// just mark as a verb
 			{"use", null},
 			{"read", null},
