@@ -9,14 +9,16 @@ namespace finalproject {
 	using System.Collections.Generic;
 	class SmallKey
 		: Item {
-		private static List<string> synonyms_before = new List<string>() {
+
+		private static List<string> synonyms_beforeSearch = new List<string>() {
 			"dust",
 			"pile",
 			"dust pile",
 			"debris pile",
 			"debris",
 		};
-		private static List<string> synonyms_after = new List<string>() {
+
+		private static List<string> synonyms_afterSearch = new List<string>() {
 			// after
 			"small key",
 			"rusted key",
@@ -28,7 +30,7 @@ namespace finalproject {
 			: base(
 				"pile of dust",
 				"small",
-				synonyms_before
+				synonyms_beforeSearch
 			) {
 			this.CanPickUp = false;
 			this.IsImportant = true;
@@ -49,7 +51,7 @@ namespace finalproject {
 					// convert to a key
 					this.isRevealed = true;
 					this.type = "key";
-					this.synonyms = synonyms_after;
+					this.synonyms = synonyms_afterSearch;
 					this.CanPickUp = true;
 					return "Searching the dust pile reveals a small key.";
 				}
