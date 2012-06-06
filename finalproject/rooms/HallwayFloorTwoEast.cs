@@ -9,6 +9,7 @@ namespace finalproject {
 	using System.Collections.Generic;
 	class HallwayFloorTwoEast
 		: Room {
+
 		private static string lookString = "You are standing in a dimly-lit hallway.";
 		private Sconce lights = new Sconce();
 		private Carpet carpet = new Carpet();
@@ -17,6 +18,8 @@ namespace finalproject {
 			new string[] {
 				"south door",
 				"south doorway",
+				"201 door",
+				"201 doorway",
 				"201",
 			}
 		);
@@ -25,6 +28,8 @@ namespace finalproject {
 			new string[] {
 				"north door",
 				"north doorway",
+				"206 door",
+				"206 doorway",
 				"206",
 			}
 		);

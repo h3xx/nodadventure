@@ -17,6 +17,8 @@ namespace finalproject {
 			new string[] {
 				"south door",
 				"south doorway",
+				"202 door",
+				"202 doorway",
 				"202",
 			}
 		);
@@ -25,6 +27,8 @@ namespace finalproject {
 			new string[] {
 				"north door",
 				"north doorway",
+				"205 door",
+				"205 doorway",
 				"205",
 			}
 		);
