@@ -72,6 +72,9 @@
     <Compile Include="rooms\HallwayFloorOneEast.cs" />
     <Compile Include="rooms\HallwayFloorOneMid.cs" />
     <Compile Include="rooms\HallwayFloorOneWest.cs" />
+    <Compile Include="items\Coat.cs" />
+    <Compile Include="items\RoomKey.cs" />
+    <Compile Include="items\scenery\YourRoomDoor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
