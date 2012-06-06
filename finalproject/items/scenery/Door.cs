@@ -57,7 +57,7 @@ namespace finalproject {
 			return failPickupMsgs[this.triedPickup++ % failPickupMsgs.Count];
 		}
 
-		public void Unlock () {
+		public void SetUnlocked () {
 			// HACK : this feels stupid
 			this.actionMessages.Remove("open");
 		}
