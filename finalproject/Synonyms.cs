@@ -62,6 +62,7 @@ namespace finalproject {
 		 	// XXX : in order to avoid conflicts, please search from most verbose to least verbose when choosing synonyms
 			{"walk", null},
 			{"go", null},
+			{"wait", null},
 		};
 
 		public readonly static List<string> TransitiveVerbs = new List<string>() {
