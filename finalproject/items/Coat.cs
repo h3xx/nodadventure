@@ -10,6 +10,7 @@ namespace finalproject {
 	class Coat
 		: Item {
 
+		private RoomKey keyInPockey = new RoomKey();
 
 		public Coat ()
 			: base (
@@ -21,11 +22,22 @@ namespace finalproject {
 					"overcoat",
 					// things on the coat
 					"pocket",
+					"key",
+					"brass key",
+					"room key",
 				}
 			) {
 
 			this.actionMessages.Add("look", "This is your coat. You don't know how you recognize it, but it's the most familiar thing you've seen so far. There is a pocket on the inner left side.");
 			this.actionMessages.Add("read", "\"Burlington.\"");
+		}
+
+		public override string PerformCommand (string cmd) {
+			if (cmd.Contains("pocket") || cmd.Contains("key")) {
+				// HACK! perform it on the pocket
+				return this.keyInPockey.PerformCommand(cmd);
+			}
+			return base.PerformCommand(cmd);
 		}
 	}
 }
