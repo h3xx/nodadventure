@@ -164,6 +164,14 @@ namespace finalproject {
 					return this.Read();
 				case "use":
 					return this.UseIntransitive();
+				case "turn on":
+					return this.TurnOn();
+				case "turn off":
+					return this.TurnOff();
+				case "lock":
+					return this.Lock();
+				case "unlock":
+					return this.Unlock();
 				default:
 					return Messages.RandomSilly(this.TerseDesc());
 			}
@@ -185,6 +193,24 @@ namespace finalproject {
 				return turnOffMsg;
 			}
 			return Messages.RandomSillyVerb("turn off");
+		}
+
+		public virtual string Lock () {
+			// FIXME : implement this
+			string lockMsg;
+			if (this.actionMessages.TryGetValue("lock", out lockMsg)) {
+				return lockMsg;
+			}
+			return Messages.RandomSillyVerb("lock");
+		}
+
+		public virtual string Unlock () {
+			// FIXME : implement this
+			string lockMsg;
+			if (this.actionMessages.TryGetValue("unlock", out lockMsg)) {
+				return lockMsg;
+			}
+			return Messages.RandomSillyVerb("unlock");
 		}
 
 		public virtual string Read () {
