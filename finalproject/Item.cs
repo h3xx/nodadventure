@@ -172,9 +172,20 @@ namespace finalproject {
 					return this.Lock();
 				case "unlock":
 					return this.Unlock();
+				case "search":
+					return this.Search();
 				default:
 					return Messages.RandomSilly(this.TerseDesc());
 			}
+		}
+
+		public virtual string Search () {
+			// FIXME : implement this
+			string searchMsg;
+			if (this.actionMessages.TryGetValue("search", out searchMsg)) {
+				return searchMsg;
+			}
+			return Messages.RandomSillyVerb("search");
 		}
 
 		public virtual string TurnOn () {
@@ -206,9 +217,9 @@ namespace finalproject {
 
 		public virtual string Unlock () {
 			// FIXME : implement this
-			string lockMsg;
-			if (this.actionMessages.TryGetValue("unlock", out lockMsg)) {
-				return lockMsg;
+			string unlockMsg;
+			if (this.actionMessages.TryGetValue("unlock", out unlockMsg)) {
+				return unlockMsg;
 			}
 			return Messages.RandomSillyVerb("unlock");
 		}
