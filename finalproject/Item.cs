@@ -164,6 +164,8 @@ namespace finalproject {
 					return this.Read();
 				case "use":
 					return this.UseIntransitive();
+				case "open":
+					return this.Open();
 				case "turn on":
 					return this.TurnOn();
 				case "turn off":
@@ -185,6 +187,11 @@ namespace finalproject {
 				return actMsg;
 			}
 			return Messages.RandomSillyVerb(baseVerb);
+		}
+
+		public virtual string Open () {
+			// FIXME : implement this
+			return this.actOrSilly("open");
 		}
 
 		public virtual string Search () {
