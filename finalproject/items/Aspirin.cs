@@ -9,6 +9,7 @@ namespace finalproject {
 	using System.Collections.Generic;
 	class Aspirin
 		: Item {
+
 		public Aspirin ()
 			: base (
 				"bottle of pills",
