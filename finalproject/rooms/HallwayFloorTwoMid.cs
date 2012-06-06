@@ -49,7 +49,7 @@ namespace finalproject {
 				);
 
 			// HACK : your room is not locked.
-			this.doorSouth.Unlock();
+			this.doorSouth.SetUnlocked();
 		}
 	}
 }
