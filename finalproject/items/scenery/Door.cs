@@ -16,6 +16,7 @@ namespace finalproject {
 			"You doubt if you could fit it in your pockets.",
 			"Sure, I'll just take it off its hinges and stick it in my pocket.",
 			"I'll pick it up after you hand me those pianoes.",
+			"You get a splinter trying to pull the door off the frame.",
 			"Seriously, dude, you can't pick it up.",
 			"Why don't you try exploring more instead of wasting my time?",
 		};

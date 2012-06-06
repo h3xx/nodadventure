@@ -13,7 +13,8 @@ namespace finalproject {
 		private static List<string> failPickupMsgs = new List<string>() {
 			"You can't get your arms around it.",
 			"You doubt if you could fit it in your pockets.",
-			"Seriously, dude, you can't pick it up.",
+			"Seriously, you can't pick it up.",
+			"You try to pick up, putting your face in an awkward and smelly position. You almost vomit, then decide that was a stupid idea.",
 			"Why don't you try exploring more instead of wasting my time?",
 		};
 		public Toilet ()
