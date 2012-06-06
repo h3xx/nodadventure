@@ -6,6 +6,7 @@ WARRANTY, to the extent permitted by law.
 */
 namespace finalproject {
 	using System;
+	using System.Collections.Generic;
 	class Closet
 		: Room {
 
@@ -41,14 +42,14 @@ namespace finalproject {
 		}
 
 		public void Illuminate () {
-			this.roomDesc = this.roomDesc_light;
+			this.roomDesc = roomDesc_light;
 			this.SpecialMessage = null;
-			this.itemsHere = this.items_light;
+			this.itemsHere = this.itemsHere_light;
 		}
 
 		public void DeIlluminate () {
 			this.roomDesc = null;
-			this.SpecialMessage = this.roomDesc_dark;
+			this.SpecialMessage = roomDesc_dark;
 
 			// prevent items from being listed if we're in darkness
 			this.itemsHere = this.itemsHere_dark;

@@ -207,6 +207,7 @@ namespace finalproject {
 			Console.WriteLine(inv);
 		}
 
+#if false
 		private static void roomDemo () {
 
 			/* ROOM TEST */
@@ -255,6 +256,7 @@ namespace finalproject {
 			Console.WriteLine(bar.Look());
 
 		}
+#endif
 
 		private static void holdTerminal () {
 			Console.WriteLine("Press any key...");
