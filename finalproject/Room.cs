@@ -12,7 +12,7 @@ namespace finalproject {
 		protected Inventory itemsHere;
 		protected string roomName, roomDesc;
 		protected bool playerHasVisited;
-		public Exits Exits;
+		public Exits ExitsHere;
 		public string SpecialMessage;
 
 		public Room ()
@@ -46,7 +46,7 @@ namespace finalproject {
 			this.roomName = roomName;
 			this.roomDesc = roomDesc;
 			this.itemsHere = itemsHere;
-			this.Exits = exits;
+			this.ExitsHere = exits;
 		}
 
 		/***** CONSTRUCTION METHODS *****/
@@ -90,8 +90,8 @@ namespace finalproject {
 					roomString += "\n" + this.roomDesc;
 				}
 
-				if (this.Exits != null) {
-					string exitsSentence = this.Exits.ToString();
+				if (this.ExitsHere != null) {
+					string exitsSentence = this.ExitsHere.ToString();
 					if (exitsSentence != null) {
 						roomString += "\n" + exitsSentence;
 					}
@@ -109,14 +109,14 @@ namespace finalproject {
 		}
 
 		public virtual Room Go (string shortDir) {
-			if (this.Exits.HasExit(shortDir) && !this.Exits.ExitIsLocked(shortDir)) {
-				return this.Exits.GetExit(shortDir);
+			if (this.ExitsHere.HasExit(shortDir) && !this.ExitsHere.ExitIsLocked(shortDir)) {
+				return this.ExitsHere.GetExit(shortDir);
 			}
 			return null;
 		}
 
 		public virtual string MsgFailGo (string shortDir) {
-			if (this.Exits.ExitIsLocked(shortDir)) {
+			if (this.ExitsHere.ExitIsLocked(shortDir)) {
 				return Messages.RandomLocked();
 			}
 			return Messages.RandomCantExit();

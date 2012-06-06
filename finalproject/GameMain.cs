@@ -74,20 +74,20 @@ namespace finalproject {
 			Room myBathroom = new MyHotelRoomBathroom();
 
 			// connect room to bathroom
-			myroom.Exits.AddExit("e", "doorway", "leading to a small bathroom", myBathroom);
-			myBathroom.Exits.AddExit("w", "doorway", "leading back into your hotel room", myroom);
+			myroom.ExitsHere.AddExit("e", "doorway", "leading to a small bathroom", myBathroom);
+			myBathroom.ExitsHere.AddExit("w", "doorway", "leading back into your hotel room", myroom);
 
 			Room hallwayMid = new HallwayFloorTwoMid();
 
 			// connect room to hallway
-			myroom.Exits.AddExit("n", "door", hallwayMid);
-			hallwayMid.Exits.AddExit("s", "door", myroom);
+			myroom.ExitsHere.AddExit("n", "door", hallwayMid);
+			hallwayMid.ExitsHere.AddExit("s", "door", myroom);
 
 			Room hallwayWest = new HallwayFloorTwoWest();
 
 			// connect mid <=> west hallways
-			hallwayWest.Exits.AddExit("e", null, "From here the hallway continues east.", hallwayMid);
-			hallwayMid.Exits.AddExit("w", null, "From here the hallway continues east and west.", hallwayWest);
+			hallwayWest.ExitsHere.AddExit("e", null, "From here the hallway continues east.", hallwayMid);
+			hallwayMid.ExitsHere.AddExit("w", null, "From here the hallway continues east and west.", hallwayWest);
 
 			Console.WriteLine(hallwayMid.Look(true));
 
@@ -99,9 +99,9 @@ namespace finalproject {
 				"expand and contract as if they were unstable. If you strain your "+
 				"ears you can just barely hear someone typing furiously on a keyboard."
 			);
-			foo.Exits.AddExit("ne", "doorway", foo);
-			foo.Exits.AddExit("nw", "doorway", foo);
-			foo.Exits.AddExit("se", "doorway", "leading to a small closet", foo);
+			foo.ExitsHere.AddExit("ne", "doorway", foo);
+			foo.ExitsHere.AddExit("nw", "doorway", foo);
+			foo.ExitsHere.AddExit("se", "doorway", "leading to a small closet", foo);
 
 			Console.WriteLine(foo.Look(true));
 		}

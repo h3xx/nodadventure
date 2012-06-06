@@ -19,14 +19,14 @@ namespace finalproject {
 			hallwayWest = new HallwayFloorOneWest();
 
 			// connect mid <=> west hallways
-			hallwayWest.Exits.AddExit("e", null, "From here the hallway continues east.", hallwayMid);
-			hallwayMid.Exits.AddExit("w", null, "From here the hallway continues east and west.", hallwayWest);
+			hallwayWest.ExitsHere.AddExit("e", null, "From here the hallway continues east.", hallwayMid);
+			hallwayMid.ExitsHere.AddExit("w", null, "From here the hallway continues east and west.", hallwayWest);
 
 			hallwayEast = new HallwayFloorOneEast();
 
 			// connect mid <=> east hallways
-			hallwayMid.Exits.AddExit("e", null, "From here the hallway continues east.", hallwayMid);
-			hallwayEast.Exits.AddExit("w", null, "From here the hallway continues east and west.", hallwayWest);
+			hallwayMid.ExitsHere.AddExit("e", null, "From here the hallway continues east.", hallwayMid);
+			hallwayEast.ExitsHere.AddExit("w", null, "From here the hallway continues east and west.", hallwayWest);
 		}
 
 		private void secondFloor (out Room hallwayWest, out Room hallwayEast) {
@@ -36,26 +36,26 @@ namespace finalproject {
 			this.StartingPoint = myroom;
 
 			// connect room to bathroom
-			myroom.Exits.AddExit("e", "doorway", "leading to a small bathroom", myBathroom);
-			myBathroom.Exits.AddExit("w", "doorway", "leading back into your hotel room", myroom);
+			myroom.ExitsHere.AddExit("e", "doorway", "leading to a small bathroom", myBathroom);
+			myBathroom.ExitsHere.AddExit("w", "doorway", "leading back into your hotel room", myroom);
 
 			Room hallwayMid = new HallwayFloorTwoMid();
 
 			// connect room to hallway
-			myroom.Exits.AddExit("n", "door", hallwayMid);
-			hallwayMid.Exits.AddExit("s", "door", myroom);
+			myroom.ExitsHere.AddExit("n", "door", hallwayMid);
+			hallwayMid.ExitsHere.AddExit("s", "door", myroom);
 
 			hallwayWest = new HallwayFloorTwoWest();
 
 			// connect mid <=> west hallways
-			hallwayWest.Exits.AddExit("e", null, "From here the hallway continues east.", hallwayMid);
-			hallwayMid.Exits.AddExit("w", null, "From here the hallway continues east and west.", hallwayWest);
+			hallwayWest.ExitsHere.AddExit("e", null, "From here the hallway continues east.", hallwayMid);
+			hallwayMid.ExitsHere.AddExit("w", null, "From here the hallway continues east and west.", hallwayWest);
 
 			hallwayEast = new HallwayFloorTwoEast();
 
 			// connect mid <=> east hallways
-			hallwayMid.Exits.AddExit("e", null, "From here the hallway continues east.", hallwayMid);
-			hallwayEast.Exits.AddExit("w", null, "From here the hallway continues east and west.", hallwayWest);
+			hallwayMid.ExitsHere.AddExit("e", null, "From here the hallway continues east.", hallwayMid);
+			hallwayEast.ExitsHere.AddExit("w", null, "From here the hallway continues east and west.", hallwayWest);
 		}
 	}
 }
