@@ -25,8 +25,34 @@ namespace finalproject {
 			//actionDemo();
 			//verboseRoomDemo();
 			//verboseExitDemo();
-			movementDemo();
+			//movementDemo();
+			revealObjectDemo();
 			holdTerminal();
+		}
+
+		private static void revealObjectDemo () {
+			Item rmk = new RoomKey();
+
+			Console.WriteLine("> look");
+			Console.WriteLine(rmk.Look());
+			Console.WriteLine("> take");
+			Console.WriteLine(rmk.Take());
+			Console.WriteLine("> close");
+			Console.WriteLine(rmk.Close());
+			Console.WriteLine("> take");
+			Console.WriteLine(rmk.Take());
+			Console.WriteLine("> open");
+			Console.WriteLine(rmk.Open());
+			Console.WriteLine("> take");
+			Console.WriteLine(rmk.Take());
+			Console.WriteLine("> close");
+			Console.WriteLine(rmk.Close());
+			Console.WriteLine("> open");
+			Console.WriteLine(rmk.Open());
+			Console.WriteLine("> take");
+			Console.WriteLine(rmk.Take());
+			Console.WriteLine("> look");
+			Console.WriteLine(rmk.Look());
 		}
 
 		private static void movementDemo () {
