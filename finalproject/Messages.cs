@@ -82,6 +82,8 @@ namespace finalproject {
 		private static List<string> locked = new List<string>() {
 			"Locked.",
 			"Locked.",
+			"You pull on the handle but it's firmly locked.",
+			"You pull on the handle but it's locked.",
 			"It's locked.",
 			"It's locked. Perhaps the key is around here somewhere.",
 		};
