@@ -146,19 +146,45 @@ namespace finalproject {
 			return this.type;
 		}
 
+		public virtual string PerformCommand (string cmd) {
+			string act = Synonyms.GetVerbBaseSynonym(cmd);
+			return this.PerformAction(act);
+		}
+
 		public virtual string PerformAction (string act) {
 			// FIXME : implement this
-			string baseSyn = Synonyms.GetVerbBaseSynonym(act);
-			if (baseSyn == "take") {
-				return this.Take();
+			switch (act) {
+				case "look":
+					return this.Look();
+				case "take":
+					return this.Take();
+				case "drop":
+					return this.Drop();
+				case "read":
+					return this.Read();
+				case "use":
+					return this.UseIntransitive();
+				default:
+					return Messages.RandomSilly(this.TerseDesc());
 			}
-			if (baseSyn == "drop") {
-				return this.Drop();
+		}
+
+		public virtual string TurnOn () {
+			// FIXME : implement this
+			string turnOnMsg;
+			if (this.actionMessages.TryGetValue("turn on", out turnOnMsg)) {
+				return turnOnMsg;
 			}
-			if (baseSyn == "read") {
-				return this.Read();
+			return Messages.RandomSillyVerb("turn on");
+		}
+
+		public virtual string TurnOff () {
+			// FIXME : implement this
+			string turnOffMsg;
+			if (this.actionMessages.TryGetValue("turn off", out turnOffMsg)) {
+				return turnOffMsg;
 			}
-			return Messages.RandomSilly(this.TerseDesc());
+			return Messages.RandomSillyVerb("turn off");
 		}
 
 		public virtual string Read () {
