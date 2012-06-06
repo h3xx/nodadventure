@@ -179,67 +179,47 @@ namespace finalproject {
 			}
 		}
 
+		private string actOrSilly (string baseVerb) {
+			string actMsg;
+			if (this.actionMessages.TryGetValue(baseVerb, out actMsg)) {
+				return actMsg;
+			}
+			return Messages.RandomSillyVerb(baseVerb);
+		}
+
 		public virtual string Search () {
 			// FIXME : implement this
-			string searchMsg;
-			if (this.actionMessages.TryGetValue("search", out searchMsg)) {
-				return searchMsg;
-			}
-			return Messages.RandomSillyVerb("search");
+			return this.actOrSilly("search");
 		}
 
 		public virtual string TurnOn () {
 			// FIXME : implement this
-			string turnOnMsg;
-			if (this.actionMessages.TryGetValue("turn on", out turnOnMsg)) {
-				return turnOnMsg;
-			}
-			return Messages.RandomSillyVerb("turn on");
+			return this.actOrSilly("turn on");
 		}
 
 		public virtual string TurnOff () {
 			// FIXME : implement this
-			string turnOffMsg;
-			if (this.actionMessages.TryGetValue("turn off", out turnOffMsg)) {
-				return turnOffMsg;
-			}
-			return Messages.RandomSillyVerb("turn off");
+			return this.actOrSilly("turn off");
 		}
 
 		public virtual string Lock () {
 			// FIXME : implement this
-			string lockMsg;
-			if (this.actionMessages.TryGetValue("lock", out lockMsg)) {
-				return lockMsg;
-			}
-			return Messages.RandomSillyVerb("lock");
+			return this.actOrSilly("lock");
 		}
 
 		public virtual string Unlock () {
 			// FIXME : implement this
-			string unlockMsg;
-			if (this.actionMessages.TryGetValue("unlock", out unlockMsg)) {
-				return unlockMsg;
-			}
-			return Messages.RandomSillyVerb("unlock");
+			return this.actOrSilly("unlock");
 		}
 
 		public virtual string Read () {
 			// FIXME : implement this
-			string readMsg;
-			if (this.actionMessages.TryGetValue("read", out readMsg)) {
-				return readMsg;
-			}
-			return Messages.RandomSillyVerb("read");
+			return this.actOrSilly("read");
 		}
 
 		public virtual string UseIntransitive () {
 			// FIXME : implement this
-			string useMsg;
-			if (this.actionMessages.TryGetValue("use", out useMsg)) {
-				return useMsg;
-			}
-			return Messages.RandomSillyVerb("use");
+			return this.actOrSilly("use");
 		}
 
 		public virtual string Take () {
