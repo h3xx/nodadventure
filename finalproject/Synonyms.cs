@@ -28,19 +28,19 @@ namespace finalproject {
 
 		public readonly static Dictionary<string, List<string>> VerbSynonyms = new Dictionary<string, List<string>>() {
 			// *** DIRECTIONS ***
-			{"go nw", new List<string>() {"nw", "northwest", "north west", "north-west", "go nw", "go northwest", "go north-west", "walk nw", "walk northwest", "walk north-west"}},
-			{"go sw", new List<string>() {"sw", "southwest", "south west", "south-west", "go sw", "go southwest", "go south-west", "walk sw", "walk southwest", "walk south-west"}},
-			{"go ne", new List<string>() {"ne", "northeast", "north east", "north-east", "go ne", "go northeast", "go north-east", "walk ne", "walk northeast", "walk north-east"}},
-			{"go se", new List<string>() {"se", "southeast", "south east", "south-east", "go se", "go southeast", "go south-east", "walk se", "walk southeast", "walk south-east"}},
-			{"go n",  new List<string>() {"n", "north", "go n", "go north", "walk n", "walk north"}},
-			{"go e",  new List<string>() {"e", "east",  "go e", "go east",  "walk e", "walk east"}},
-			{"go w",  new List<string>() {"w", "west",  "go w", "go west",  "walk w", "walk west"}},
-			{"go s",  new List<string>() {"s", "south", "go s", "go south", "walk s", "walk south"}},
+			{"go nw", new List<string>() {"nw", "northwest", "north west", "north-west", "go northwest", "go north-west", "walk nw", "walk northwest", "walk north-west"}},
+			{"go sw", new List<string>() {"sw", "southwest", "south west", "south-west", "go southwest", "go south-west", "walk sw", "walk southwest", "walk south-west"}},
+			{"go ne", new List<string>() {"ne", "northeast", "north east", "north-east", "go northeast", "go north-east", "walk ne", "walk northeast", "walk north-east"}},
+			{"go se", new List<string>() {"se", "southeast", "south east", "south-east", "go southeast", "go south-east", "walk se", "walk southeast", "walk south-east"}},
+			{"go n",  new List<string>() {"n", "north", "go north", "walk n", "walk north"}},
+			{"go e",  new List<string>() {"e", "east",  "go east",  "walk e", "walk east"}},
+			{"go w",  new List<string>() {"w", "west",  "go west",  "walk w", "walk west"}},
+			{"go s",  new List<string>() {"s", "south", "go south", "walk s", "walk south"}},
 
-			{"go r",  new List<string>() {"r", "right", "walk r", "walk right"}},
-			{"go l",  new List<string>() {"l", "left", "walk l", "walk left"}},
-			{"go u",  new List<string>() {"u", "up", "walk u", "walk up", "climb u", "climb up"}},
-			{"go d",  new List<string>() {"d", "down", "walk d", "walk down", "climb d", "climb down"}},
+			{"go r",  new List<string>() {"r", "right", "go r", "go right", "walk r", "walk right"}},
+			{"go l",  new List<string>() {"l", "left", "go l", "go left", "walk l", "walk left"}},
+			{"go u",  new List<string>() {"u", "up", "go u", "go up", "walk u", "walk up", "climb u", "climb up"}},
+			{"go d",  new List<string>() {"d", "down", "go d", "go down", "walk d", "walk down", "climb d", "climb down"}},
 
 			// *** ACTIONS ***
 			{"take",  new List<string>() {"get", "pick up", "pick", "steal", "acquire"}},
