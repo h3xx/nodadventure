@@ -6,11 +6,10 @@ WARRANTY, to the extent permitted by law.
 */
 namespace finalproject {
 	using System;
-	class YourRoomDoor
+	class MyRoomDoor
 		: Door {
 
-
-		public YourRoomDoor ()
+		public MyRoomDoor ()
 			: base (null) {
 
 		}
