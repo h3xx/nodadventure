@@ -219,14 +219,13 @@ namespace finalproject {
 			foreach (string phrase in tryWordCombinations) {
 				//Console.WriteLine("trying combination: {0}", phrase);
 				Item foundItem = playerInventory.GetItem(phrase);
-				if (foundItem != null) {
-					//Console.WriteLine("Found it!");
+				if (foundItem != null && !matches.Contains(foundItem)) {
 					matches.Add(foundItem);
 				}
 
 				if (currentRoom != null) {
 					foundItem = currentRoom.GetItem(phrase);
-					if (foundItem != null) {
+					if (foundItem != null && !matches.Contains(foundItem)) {
 						matches.Add(foundItem);
 					}
 				}
