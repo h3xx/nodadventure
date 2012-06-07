@@ -9,9 +9,8 @@ namespace finalproject {
 	using System.Collections.Generic;
 	class MyHotelRoom 
 		: Room {
-		Door doorOut;
+		Door doorOut = new Door(null);
 
-		private bool canExit = false;
 		private static readonly string lookString = "You are standing in your hotel room. There is a bed along the south wall, with a nightstand next to it. On the nightstand there is an alarm clock.";
 		private EntranceToCloset closetEntrance = new EntranceToCloset();
 
@@ -28,10 +27,6 @@ namespace finalproject {
 				}
 
 			);
-		}
-
-		public void Unlock () {
-			this.canExit = true;
 		}
 	}
 }
