@@ -15,6 +15,8 @@ namespace finalproject {
 			{"se", "to the southeast"},
 			{"n", "to the north"},
 			{"s", "to the south"},
+			{"w", "to the west"},
+			{"e", "to the east"},
 
 			{"r", "to the right"},
 			{"l", "to the left"},
@@ -176,7 +178,8 @@ namespace finalproject {
 
 						dirDesc = directionToLong(shortDir);
 						if (method != null) {
-							exitsSentence += Messages.RandomDeclarativeSingular() + " " + English.Articalize(method) + " here " + verbose + ".";
+							exitsSentence += Messages.RandomDeclarativeSingular() + " " + English.Articalize(method) + " here " +
+								String.Format(verbose, dirDesc) + ".";
 						} else {
 							exitsSentence += verbose;
 						}
