@@ -80,7 +80,7 @@ namespace finalproject {
 			// transitive verbs without an object
 			if (Synonyms.TransitiveVerbs.Contains(verb[1])) {
 				if (cmd_words.Length < 2) {
-					Print("transitive verb `" + verb[1] + "' w/o object");
+					Print(Messages.RandomNoObjectForVerb(verb[1]));
 					return;
 				}
 

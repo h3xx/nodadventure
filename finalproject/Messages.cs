@@ -136,6 +136,12 @@ namespace finalproject {
 			"You are floating in the void.",
 		};
 
+		private static List<string> noTransitiveObject = new List<string>() {
+			"You're not sure how to {0} nothing.",
+			"What? What do you want to {0}?",
+			"What? What do you want to {0}?",
+		};
+
 		private static string selectRandom (List<string> dict) {
 			return dict[rng.Next(dict.Count-1)];
 		}
@@ -207,6 +213,10 @@ namespace finalproject {
 
 		public static string RandomUnknownObject (string thing) {
 			return formatRandom(noObject, thing);
+		}
+
+		public static string RandomNoObjectForVerb (string thing) {
+			return formatRandom(noTransitiveObject, thing);
 		}
 
 		public static string GreetingMsg () {
