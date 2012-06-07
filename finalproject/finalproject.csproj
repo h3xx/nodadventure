@@ -79,6 +79,7 @@
     <Compile Include="items\scenery\EntranceToCloset.cs" />
     <Compile Include="rooms\JanitorCloset.cs" />
     <Compile Include="items\scenery\MyRoomDoor.cs" />
+    <Compile Include="items\scenery\LockedDoor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

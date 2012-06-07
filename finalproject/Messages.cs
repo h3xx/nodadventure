@@ -106,6 +106,22 @@ namespace finalproject {
 			"It's locked. Perhaps the key is around here somewhere.",
 		};
 
+		private static List<string> unlockAction = new List<string>() {
+			"You unlock {0}.",
+			"You unlock {0}.",
+			"You succeed in unlocking {0}.",
+			"You successfully unlock {0}.",
+			"You hear a click as you unlock {0}.",
+		};
+
+		private static List<string> lockAction = new List<string>() {
+			"You lock {0}.",
+			"You lock {0}.",
+			"You succeed in locking {0}.",
+			"You successfully lock {0}.",
+			"You hear a click as you lock {0}.",
+		};
+
 		private static List<string> sillyVerb = new List<string>() {
 			"That's a silly thing to {0}.",
 			"What a silly thing to {0}.",
@@ -217,6 +233,14 @@ namespace finalproject {
 
 		public static string RandomNoObjectForVerb (string thing) {
 			return formatRandom(noTransitiveObject, thing);
+		}
+
+		public static string RandomUnlockSuccess (string articalizedThing) {
+			return formatRandom(unlockAction, articalizedThing);
+		}
+
+		public static string RandomLockSuccess (string articalizedThing) {
+			return formatRandom(lockAction, articalizedThing);
 		}
 
 		public static string GreetingMsg () {

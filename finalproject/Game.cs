@@ -16,7 +16,7 @@ namespace finalproject {
 			this.layout = new RoomLayout();
 			this.player = new Player(this.layout.StartingPoint);
 			this.shell = new Shell(this.player);
-			this.player = new Player();
+			this.player = Globals.CurrentGlobals.CurrentPlayer;
 			this.shell.FirstShell();
 			while (!this.player.isDead && !this.shell.WantsQuit) {
 				this.shell.DoShell();

@@ -68,6 +68,7 @@ namespace finalproject {
 
 			// English
 			this.synonyms = new List<string>() {
+				"bucket",
 				capacity + "g bucket",
 				capacity + " g bucket",
 				capacity + " gal bucket",

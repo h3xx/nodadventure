@@ -10,13 +10,21 @@ namespace finalproject {
 		public static Globals CurrentGlobals = new Globals();
 
 		public static void Reset () {
-			CurrentGlobals = new Globals();
+			Reset(new Player());
+		}
+
+		public static void Reset (Player currentPlayer) {
+			CurrentGlobals = new Globals(currentPlayer);
 		}
 
 		public DateTime Time;
+		public Player CurrentPlayer;
 
-		public Globals () {
-			 this.Time = new DateTime(2012, 6, 5, 23, 20, 0);
+		public Globals () : this(new Player()) {}
+
+		public Globals (Player currentPlayer) {
+			this.CurrentPlayer = currentPlayer;
+			this.Time = new DateTime(2012, 6, 5, 23, 20, 0);
 		}
 
 		/**

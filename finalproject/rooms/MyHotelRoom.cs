@@ -9,7 +9,7 @@ namespace finalproject {
 	using System.Collections.Generic;
 	class MyHotelRoom 
 		: Room {
-		Door doorOut = new MyRoomDoor();
+		Door doorOut;
 
 		private bool canExit = false;
 		private static readonly string lookString = "You are standing in your hotel room. There is a bed along the south wall, with a nightstand next to it. On the nightstand there is an alarm clock.";

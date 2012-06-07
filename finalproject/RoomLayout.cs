@@ -29,6 +29,12 @@ namespace finalproject {
 			// connect mid <=> east hallways
 			hallwayMid.ExitsHere.AddExit("e", null, "From here the hallway continues east and west.", hallwayEast);
 			hallwayEast.ExitsHere.AddExit("w", null, "From here the hallway continues west.", hallwayMid);
+
+			Room janitorsCloset = new JanitorCloset();
+
+			// connect west hallway <=> janitor's closet
+			hallwayWest.ExitsHere.AddExit("ne", "door", "There is a door to the {0} leading to a janitor's closet", janitorsCloset);
+			janitorsCloset.ExitsHere.AddExit("sw", "door", "There is a door to the {0} leading back out into the hallway.", hallwayWest);
 		}
 
 		private void secondFloor (out Room hallwayWest, out Room hallwayEast) {

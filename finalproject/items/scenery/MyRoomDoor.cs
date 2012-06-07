@@ -7,11 +7,14 @@ WARRANTY, to the extent permitted by law.
 namespace finalproject {
 	using System;
 	class MyRoomDoor
-		: Door {
+		: LockedDoor {
 
-		public MyRoomDoor ()
-			: base (null) {
+		private static readonly string needsToLockUnlock = "room key";
 
+		public MyRoomDoor (Room whereAmI, string doorDirection)
+			: base (
+				whereAmI, doorDirection, needsToLockUnlock
+			) {
 		}
 	}
 }
