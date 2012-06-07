@@ -6,6 +6,9 @@ WARRANTY, to the extent permitted by law.
 */
 namespace finalproject {
 	using System;
+	using System.Text;
+	using System.Linq;
+
 	class Toolbox {
 		// all this just get Perl functionality?
 		public static void ArrayShift<T> (ref T[] ary) {
@@ -31,6 +34,49 @@ namespace finalproject {
 
 		public static string UcFirst (string str) {
 			return str.Substring(0,1).ToUpper() + str.Substring(1);
+		}
+
+		public static string WrapString (string text) {
+			return WrapString(text, Console.BufferWidth, "");
+		}
+
+		public static string WrapString (string text, string prefix) {
+			return WrapString(text, Console.BufferWidth - 5, prefix);
+		}
+
+		public static string WrapString (string text, int width) {
+			return WrapString(text, width, "");
+		}
+
+		public static string WrapString (string text, int width, string prefix) {
+			prefix = "\n" + prefix;
+
+			var lines = text.Split('\n').ToList();
+			var result = new StringBuilder(prefix);
+			foreach (var line in lines) {
+				var words = line.Split(new string[] {" "}, StringSplitOptions.RemoveEmptyEntries).ToList();
+	
+				int lineSize = 0;
+				foreach (var word in words) {
+					int wordLen = word.Length;
+	
+					// do we need to start a new line?
+					if ((lineSize + wordLen) > width) {
+						result.Remove(result.Length - 1, 1); // remove trailing space
+						lineSize = 0;
+						result.Append(prefix);
+					}
+	
+					result.Append(word).Append(' ');
+					lineSize += wordLen + 1;
+				}
+				result.Remove(result.Length - 1, 1); // remove trailing space
+				result.Append('\n');
+			}
+
+			result.Remove(result.Length - 1, 1); // remove trailing space
+
+			return result.ToString();
 		}
 	}
 }
