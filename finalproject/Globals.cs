@@ -19,6 +19,11 @@ namespace finalproject {
 			 this.Time = new DateTime(2012, 6, 5, 23, 20, 0);
 		}
 
+		/**
+		 * <summary>
+		 * Execute a tick, i.e. a game turn.
+		 * </summary>
+		 */
 		public void Tick () {
 			this.Time = this.Time.AddSeconds(20);
 		}
