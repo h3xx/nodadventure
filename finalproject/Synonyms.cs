@@ -70,7 +70,7 @@ namespace finalproject {
 		public readonly static List<string> TransitiveVerbs = new List<string>() {
 			// note: only use the root synonyms from VerbSynonyms
 			"kick", "use", "read", "put", "take", "go", "hit", "walk", "lock", "unlock",
-			"drop", "turn on", "turn off", "open", "close", "search", "throw",
+			"drop", "turn on", "turn off", "open", "close", "search", "throw", "look",
 		};
 
 		public readonly static List<string> Prepositions = new List<string>() {
