@@ -17,13 +17,9 @@ You look at the clock. You've been asleep all afternoon and it's already dark.
 Funny, you don't feel like you got a good night's sleep, or any sleep at all
 for that matter.
 
-You look at the nightstand and see a picture of yourself holding a red herring.
-
 You try the door, but it's locked. You look in the bathroom and find a towel.
 You search around the room, but only find your toothbrush and a bottle of
-aspirin. You search your luggage but only find some
-
-FIXME
+aspirin.
 
 While you're sitting on the bed trying to remember where you were before here,
 the light on the nightstand goes out with an audible pop. Then the hotel door
@@ -70,6 +66,19 @@ grin before you wake up covered in sweat, back in the hotel room.
 
 You're not sure what happened, but you feel your pockets and the key is still
 there.
+
+Act 2
+-----
+
+You try the key in your door. It fits. You turn the handle and head out into
+the hall.
+
+You go back to where you found the staircase but all you can find on the wall
+is a photograph of you. You're holding a red herring. How a photo of you got on
+the wall in this strange hotel, you'll never know.
+
+Downstairs, you find a janitor's closet with a large bucket, which you take.
+
 
 <!-- vi: ft=markdown spell
 -->
