@@ -286,7 +286,7 @@ namespace finalproject {
 		public bool MatchesSynonym (string syn) {
 			if (syn == null) return false;
 
-			return this.synonyms.Contains(syn);
+			return this.type == syn || this.synonyms.Contains(syn);
 		}
 
 
