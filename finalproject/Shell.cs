@@ -58,6 +58,11 @@ namespace finalproject {
 				return;
 			}
 
+			if (verb[1] == "inventory") {
+				Print(this.player.Inv.ToString());
+				return;
+			}
+
 			// unrecognized direction
 			if (verb[1] == "go") {
 				Print("I don't know how to go in that direction.");
@@ -91,7 +96,21 @@ namespace finalproject {
 				}
 				foreach (Item i in its) {
 					Print(i.PerformCommand(cmd));
+					if (verb[1] == "take") {
+						// round about item collection
+						if (i.PlayerHas) {
+							player.CurrentRoom.RemoveItem(i);
+							player.Inv.AddItem(i);
+						}
+					} else if (verb[1] == "drop") {
+						// round about item loss
+						if (!i.PlayerHas) {
+							player.CurrentRoom.AddItem(i);
+							player.Inv.RemoveItem(i);
+						}
+					}
 				}
+				return;
 			}
 
 			Print(Messages.RandomDontUnderstand());
