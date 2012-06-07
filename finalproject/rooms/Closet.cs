@@ -27,6 +27,7 @@ namespace finalproject {
 
 			this.itemsHere_light = new Inventory(
 				new List<Item>() {
+					new Bucket(3),
 					this.lightswitch,
 					this.carpet,
 				}
