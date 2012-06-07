@@ -164,7 +164,7 @@ namespace finalproject {
 							"\\s*" + Regex.Escape(phrase) + "\\s*"
 						);
 						string noVerb = verbPhrase.Replace(Toolbox.Join(words), "");
-						nonVerbParts = noVerb.Split(' ');
+						nonVerbParts = noVerb.Split(new string[] {" "},StringSplitOptions.RemoveEmptyEntries);
 					} else {
 						nonVerbParts = null;
 					}
