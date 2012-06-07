@@ -9,6 +9,18 @@ namespace finalproject {
 	using System;
 	using System.Collections.Generic;
 	class Messages {
+		public static readonly string CopyrightMsg =
+			"Copyright (C) 2012 Dan Church.";
+		public static readonly string LicenseMsg =
+			"License GPLv3+: GNU GPL version 3 or later "+
+			"(http://gnu.org/licenses/gpl.html). "+
+			"This is free software: you are free to change "+
+				"and redistribute it. There is NO WARRANTY, "+
+				"to the extent permitted by law.\n"+
+				"Other elements distributed under the "+
+				"Creative Commons Attribution NonCommercial ShareAlike "+
+				"3.0 Unported license.";
+
 		private static Random rng = new Random();
 
 		private static List<string> sillyActions = new List<string>() {
@@ -24,9 +36,15 @@ namespace finalproject {
 
 		private static List<string> dontUnderstand = new List<string>() {
 			"I don't understand that.",
+			"I don't understand that.",
+			"I don't understand that.",
+			"I'm sorry but I don't understand that.",
 			"I don't know what you mean by that.",
 			"I don't know what you mean.",
+			"I'm sorry but I don't know what you mean.",
 			"Wha'chu talkin' 'bout, Willis?",
+			"You seem to be missing a verb.",
+			"English, motherf**ker. Do you speak it?",
 		};
 
 		private static List<string> declarativesPlural = new List<string>() {
@@ -93,6 +111,25 @@ namespace finalproject {
 			"What a silly thing to {0}.",
 		};
 
+		private static List<string> noCmd = new List<string>() {
+			"Just keep hitting the enter key, see what happens.",
+			"You're going to break your enter key if you keep doing that.",
+			"You didn't enter a command.",
+			"You kind of failed to say anything.",
+			"Y U NO ENTER COMMAND?",
+		};
+
+		private static List<string> noCmd_mad = new List<string>() {
+			"Just keep hitting the enter key, see what happens.",
+			"You had better enter a command soon or something bad might happen.",
+		};
+
+		private static List<string> noRoom = new List<string>() {
+			"You don't seem to be anywhere in particular at the moment.",
+			"Looks like the programmer forgot to place you somewhere.",
+			"You are floating in the void.",
+		};
+
 		private static string selectRandom (List<string> dict) {
 			return dict[rng.Next(dict.Count-1)];
 		}
@@ -148,6 +185,23 @@ namespace finalproject {
 
 		public static string RandomSillyVerb (string verb) {
 			return formatRandom(sillyVerb, verb);
+		}
+
+		public static string RandomNoCmd () {
+			return selectRandom(noCmd);
+		}
+
+		public static string RandomNoCmdMad () {
+			return selectRandom(noCmd_mad);
+		}
+
+		public static string RandomNoRoom () {
+			return selectRandom(noRoom);
+		}
+
+		public static string GreetingMsg () {
+			return "Welcome to the Nod Adventure, an interactive fiction game.\n"+
+				CopyrightMsg + "\n" + LicenseMsg;
 		}
 	}
 }
