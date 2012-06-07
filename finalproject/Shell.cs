@@ -28,7 +28,7 @@ namespace finalproject {
 
 		private string lastCommand;
 		private Player player;
-		public bool WantsQuit = false;
+		public bool WantsQuit = false, WantsRestart = false;
 
 		public Shell (Player player) {
 			this.player = player;
@@ -155,6 +155,19 @@ namespace finalproject {
 			return false;
 		}
 
+		private bool checkRestart (string normCmd, out string response) {
+			// caveat: return value is whether to stop processing commands (true = error)
+			// what if we want to quit?
+			if (normCmd.StartsWith("restart")) {
+				response = "Quitter.";
+				this.WantsQuit = true;
+				this.WantsRestart = true;
+				return true;
+			}
+			response = null;
+			return false;
+		}
+
 		private bool checkRepeat (string normCmd, out string response, out string finalCmd) {
 			// caveat: return value is whether to stop processing commands (true = error)
 			// want a repeat of last command
@@ -189,7 +202,8 @@ namespace finalproject {
 
 			string response;
 			if (this.checkEmptyCmd(inCmd, out response) ||
-			    this.checkQuit(inCmd, out response)) {
+			    this.checkQuit(inCmd, out response) ||
+			    this.checkRestart(inCmd, out response)) {
 				Print(response);
 				return;
 			}

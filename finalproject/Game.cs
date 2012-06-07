@@ -12,6 +12,10 @@ namespace finalproject {
 		private RoomLayout layout;
 
 		public Game () {
+			this.runGame();
+		}
+
+		private void runGame () {
 			this.startGame();
 			this.layout = new RoomLayout();
 			this.player = new Player(this.layout.StartingPoint);
@@ -20,6 +24,10 @@ namespace finalproject {
 			this.shell.FirstShell();
 			while (!this.player.isDead && !this.shell.WantsQuit) {
 				this.shell.DoShell();
+			}
+			if (this.shell.WantsRestart) {
+				// do it again
+				this.runGame();
 			}
 		}
 
