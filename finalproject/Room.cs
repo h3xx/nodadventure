@@ -105,6 +105,7 @@ namespace finalproject {
 			if (this.SpecialMessage != null) {
 				roomString += "\n" + this.SpecialMessage;
 			}
+
 			return roomString;
 		}
 
