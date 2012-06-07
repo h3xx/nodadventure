@@ -45,7 +45,8 @@ namespace finalproject {
 
 		private void runCommand (string cmd) {
 			string[] cmd_words = cmd.Split(' ');
-			string[] verb = Commands.GetCommandVerb(cmd_words);
+			string[] nonVerbParts;
+			string[] verb = Commands.GetCommandVerb(cmd_words, out nonVerbParts);
 			if (verb == null) {
 				Print(Messages.RandomDontUnderstand());
 				return;
@@ -57,7 +58,7 @@ namespace finalproject {
 			}
 
 			if (verb[1] == "look" &&
-			    (cmd_words.Length < 2 || cmd_words[1] == "room")) {
+			    (nonVerbParts.Length < 1 || nonVerbParts[0] == "room")) {
 				if (this.player.CurrentRoom == null) {
 					Print(Messages.RandomNoRoom());
 					return;
