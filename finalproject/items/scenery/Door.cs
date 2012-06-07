@@ -44,6 +44,7 @@ namespace finalproject {
 				this.actionMessages.Add("open", "Locked.");
 				this.actionMessages.Add("look", "It's a door, it's made of wood. You see a small plaque on the door that reads \""+Toolbox.UcFirst(roomNr)+".\"");
 			} else {
+				this.actionMessages.Add("read", "There are no markings on the door.");
 				this.actionMessages.Add("look", "It's a door, it's made of wood. What else do you want me to say?");
 			}
 
