@@ -57,6 +57,11 @@ namespace finalproject {
 				return "The light is already on.";
 			}
 		}
+
+		public override string UseIntransitive () {
+			return this.isOn ? this.TurnOff() : this.TurnOn();
+		}
+
 		public override string MsgFailPickup () {
 			// cycle through messages
 			return failPickupMsgs[this.triedPickup++ % failPickupMsgs.Count];
