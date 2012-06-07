@@ -7,7 +7,9 @@ WARRANTY, to the extent permitted by law.
 namespace finalproject {
 	using System;
 	using System.Collections.Generic;
-	class Bucket : Item {
+	class Bucket
+		: Item {
+
 		// Can you tell I'm a Perl programmer?
 		// hack! allow magical synonym generation for the two different buckets in the game.
 		private static Dictionary<int, List<string>> names = new Dictionary<int, List<string>>() {
@@ -58,9 +60,13 @@ namespace finalproject {
 			}
 		}
 
-		public Bucket (int capacity) : base ("bucket") {
+		public Bucket (int capacity)
+			: base (
+				"bucket",
+				capacity + " gallon"
+			) {
+
 			this.capacity = capacity;
-			this.attributes = capacity + " gallon";
 
 			//this.Fill = 0;
 			// (this is simpler)
