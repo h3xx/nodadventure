@@ -133,10 +133,24 @@ namespace finalproject {
 		}
 
 		public static string[] GetCommandVerb (string cmd) {
-			return GetCommandVerb(splitCommand(cmd));
+			string[] nonVerbParts;
+			return GetCommandVerb(splitCommand(cmd), out nonVerbParts, false);
 		}
 
 		public static string[] GetCommandVerb (string[] words) {
+			string[] nonVerbParts;
+			return GetCommandVerb(words, out nonVerbParts, false);
+		}
+
+		public static string[] GetCommandVerb (string cmd, out string[] nonVerbParts) {
+			return GetCommandVerb(splitCommand(cmd), out nonVerbParts, true);
+		}
+
+		public static string[] GetCommandVerb (string[] words, out string[] nonVerbParts) {
+			return GetCommandVerb(words, out nonVerbParts, true);
+		}
+
+		private static string[] GetCommandVerb (string[] words, out string[] nonVerbParts, bool giveAShitWhatNonVerbPartsIs) {
 			List<string> tryWordCombinations = wordCombinationsFromBeginning(words);
 			tryWordCombinations.Reverse();
 
@@ -144,10 +158,21 @@ namespace finalproject {
 			foreach (string phrase in tryWordCombinations) {
 				vbase = Synonyms.GetVerbBaseSynonym(phrase);
 				if (vbase != null) {
+					// don't do extra work if we can avoid it
+					if (giveAShitWhatNonVerbPartsIs) {
+						Regex verbPhrase = new Regex(
+							"\\s*" + Regex.Escape(phrase) + "\\s*"
+						);
+						string noVerb = verbPhrase.Replace(Toolbox.Join(words), "");
+						nonVerbParts = noVerb.Split(' ');
+					} else {
+						nonVerbParts = null;
+					}
 					return new string[] {phrase, vbase}; // note: do not get base synonym just yet
 				}
 			}
 
+			nonVerbParts = null;
 			return null;
 		}
 
