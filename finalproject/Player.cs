@@ -6,12 +6,20 @@ WARRANTY, to the extent permitted by law.
 */
 namespace finalproject {
 	class Player {
-		private Inventory inv = new Inventory(true);
-		public Room currentRoom;
+		public Inventory Inv = new Inventory(true);
+		public Room CurrentRoom;
 		public bool isDead = false;
 
+		public Player ()
+			: this (null) {
+		}
+
+		public Player (Room currentRoom) {
+			this.CurrentRoom = currentRoom;
+		}
+
 		public void AddItem (Item i) {
-			this.inv.AddItem(i);
+			this.Inv.AddItem(i);
 		}
 
 		public string Look () {
@@ -19,7 +27,7 @@ namespace finalproject {
 		}
 
 		public string Inventory () {
-			return this.inv.ToString();
+			return this.Inv.ToString();
 		}
 
 		public string Kill () {
