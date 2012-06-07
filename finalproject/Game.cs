@@ -8,7 +8,6 @@ namespace finalproject {
 	using System;
 	class Game {
 		private Shell shell;
-		private Player player;
 		private RoomLayout layout;
 
 		public Game () {
@@ -18,11 +17,10 @@ namespace finalproject {
 		private void runGame () {
 			this.startGame();
 			this.layout = new RoomLayout();
-			this.player = new Player(this.layout.StartingPoint);
-			this.shell = new Shell(this.player);
-			this.player = Globals.CurrentGlobals.CurrentPlayer;
+			Globals.CurrentGlobals.CurrentPlayer.CurrentRoom = this.layout.StartingPoint;
+			this.shell = new Shell();
 			this.shell.FirstShell();
-			while (!this.player.isDead && !this.shell.WantsQuit) {
+			while (!this.shell.WantsQuit) {
 				this.shell.DoShell();
 			}
 			if (this.shell.WantsRestart) {

@@ -27,18 +27,16 @@ namespace finalproject {
 		}
 
 		private string lastCommand;
-		private Player player;
 		public bool WantsQuit = false, WantsRestart = false;
 
-		public Shell (Player player) {
-			this.player = player;
+		public Shell () {
 		}
 
 		public void FirstShell () {
 			Print(Messages.GreetingMsg());
 			// give a description of the room, if any
-			if (this.player.CurrentRoom != null) {
-				Print(this.player.CurrentRoom.EnterRoom());
+			if (Globals.CurrentGlobals.CurrentPlayer.CurrentRoom != null) {
+				Print(Globals.CurrentGlobals.CurrentPlayer.CurrentRoom.EnterRoom());
 			}
 			this.DoShell();
 		}
@@ -59,16 +57,16 @@ namespace finalproject {
 
 			if (verb[1] == "look" &&
 			    (nonVerbParts.Length < 1 || nonVerbParts[0] == "room")) {
-				if (this.player.CurrentRoom == null) {
+				if (Globals.CurrentGlobals.CurrentPlayer.CurrentRoom == null) {
 					Print(Messages.RandomNoRoom());
 					return;
 				}
-				Print(this.player.CurrentRoom.Look(true));
+				Print(Globals.CurrentGlobals.CurrentPlayer.CurrentRoom.Look(true));
 				return;
 			}
 
 			if (verb[1] == "inventory") {
-				Print(this.player.Inv.ToString());
+				Print(Globals.CurrentGlobals.CurrentPlayer.Inv.ToString());
 				return;
 			}
 
@@ -81,12 +79,12 @@ namespace finalproject {
 			// movement commands
 			if (verb[1].StartsWith("go ")) {
 				string moveDir = verb[1].Split(' ')[1];
-				Room moveToRoom = this.player.CurrentRoom.Go(moveDir);
+				Room moveToRoom = Globals.CurrentGlobals.CurrentPlayer.CurrentRoom.Go(moveDir);
 				if (moveToRoom == null) {
-					Print(this.player.CurrentRoom.MsgFailGo(moveDir));
+					Print(Globals.CurrentGlobals.CurrentPlayer.CurrentRoom.MsgFailGo(moveDir));
 					return;
 				}
-				this.player.CurrentRoom = moveToRoom;
+				Globals.CurrentGlobals.CurrentPlayer.CurrentRoom = moveToRoom;
 				Print(moveToRoom.EnterRoom());
 				return;
 			}
@@ -98,7 +96,7 @@ namespace finalproject {
 				return;
 			}
 
-			List<Item> its = Commands.GetCommandItems(cmd, player.CurrentRoom, player.Inv);
+			List<Item> its = Commands.GetCommandItems(cmd, Globals.CurrentGlobals.CurrentPlayer.CurrentRoom, Globals.CurrentGlobals.CurrentPlayer.Inv);
 			if (its.Count < 1) {
 				Toolbox.ArrayShift(ref cmd_words);
 				Print(Messages.RandomUnknownObject(Toolbox.Join(cmd_words)));
@@ -110,14 +108,14 @@ namespace finalproject {
 				if (verb[1] == "take") {
 					// round about item collection
 					if (i.PlayerHas) {
-						player.CurrentRoom.RemoveItem(i);
-						player.Inv.AddItem(i);
+						Globals.CurrentGlobals.CurrentPlayer.CurrentRoom.RemoveItem(i);
+						Globals.CurrentGlobals.CurrentPlayer.Inv.AddItem(i);
 					}
 				} else if (verb[1] == "drop") {
 					// round about item loss
 					if (!i.PlayerHas) {
-						player.CurrentRoom.AddItem(i);
-						player.Inv.RemoveItem(i);
+						Globals.CurrentGlobals.CurrentPlayer.CurrentRoom.AddItem(i);
+						Globals.CurrentGlobals.CurrentPlayer.Inv.RemoveItem(i);
 					}
 				}
 			}
@@ -130,7 +128,7 @@ namespace finalproject {
 				++this.numEmptyCmds;
 				if (this.numEmptyCmds > threshold_numempty) {
 					response = "THAT'S IT! I WARNED YOU!\n" +
-						this.player.Kill();
+						Globals.CurrentGlobals.CurrentPlayer.Kill();
 				} else if (this.numEmptyCmds > threshold_numempty_warn) {
 					response = Messages.RandomNoCmdMad();
 				} else {
@@ -149,6 +147,7 @@ namespace finalproject {
 			if (normCmd.StartsWith("quit")) {
 				response = "Quitter.";
 				this.WantsQuit = true;
+				this.WantsRestart = false;
 				return true;
 			}
 			response = null;
@@ -191,6 +190,14 @@ namespace finalproject {
 			return false;
 		}
 
+		private void askRestart () {
+			Print("\nDo you want to restart [y/N]? ");
+			string inString = Console.ReadLine().ToLower();
+			if (inString.StartsWith("y")) {
+				this.WantsRestart = true;
+			}
+		}
+
 		public void DoShell () {
 			Console.Write("\n" + prompt);
 			string inCmd = Console.ReadLine();
@@ -215,6 +222,10 @@ namespace finalproject {
 
 			// user entered something, however untelligible
 			this.runCommand(finalCmd);
+
+			if (Globals.CurrentGlobals.CurrentPlayer.isDead) {
+				this.askRestart();
+			}
 		}
 
 		public static void Print (string msg) {
