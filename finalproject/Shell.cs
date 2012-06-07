@@ -28,14 +28,28 @@ namespace finalproject {
 
 		private string lastCommand;
 		private Player player;
-		public bool wantsExit = false;
+		public bool WantsQuit = false;
 
 		public Shell (Player player) {
 			this.player = player;
 		}
 
 		public void RunCommand (string cmd) {
-			if (cmd == "look" || cmd == "look room") {
+			string[] verb = Commands.GetCommandVerb(cmd);
+			if (verb == null) {
+				Print(Messages.RandomDontUnderstand());
+				return;
+			}
+
+			string[] cmd_words = cmd.Split(' ');
+
+			if (verb[1] == "wait") {
+				// do nothing
+				return;
+			}
+
+			if (verb[1] == "look" &&
+			    (cmd_words.Length < 2 || cmd_words[1] == "room")) {
 				if (this.player.CurrentRoom == null) {
 					Print(Messages.RandomNoRoom());
 					return;
@@ -44,20 +58,44 @@ namespace finalproject {
 				return;
 			}
 
-			string[] verb = Commands.GetCommandVerb(cmd);
-
-			if (verb == null) {
-				Print(Messages.RandomDontUnderstand());
+			// unrecognized direction
+			if (verb[1] == "go") {
+				Print("I don't know how to go in that direction.");
+				return;
 			}
 
-			if (verb != null) {
-				Print("verb: " + verb[1]);
+			// movement commands
+			if (verb[1].StartsWith("go ")) {
+				string moveDir = verb[1].Split(' ')[1];
+				Room moveToRoom = this.player.CurrentRoom.Go(moveDir);
+				if (moveToRoom == null) {
+					Print(this.player.CurrentRoom.MsgFailGo(moveDir));
+					return;
+				}
+				this.player.CurrentRoom = moveToRoom;
+				Print(moveToRoom.EnterRoom());
+				return;
 			}
 
-			List<Item> its = Commands.GetCommandItems(cmd, player.CurrentRoom, player.Inv);
-			foreach (Item i in its) {
-				Print("you mentioned: " + i.ToString());
+			// transitive verbs without an object
+			if (Synonyms.TransitiveVerbs.Contains(verb[1])) {
+				if (cmd_words.Length < 2) {
+					Print("transitive verb `" + verb[1] + "' w/o object");
+					return;
+				}
+
+				List<Item> its = Commands.GetCommandItems(cmd, player.CurrentRoom, player.Inv);
+				if (its.Count < 1) {
+					Print(Messages.RandomUnknownObject(cmd_words.ToString()));
+					return;
+				}
+				foreach (Item i in its) {
+					Print(i.PerformCommand(cmd));
+				}
 			}
+
+			Print(Messages.RandomDontUnderstand());
+
 		}
 
 		public void FirstShell () {
@@ -96,7 +134,7 @@ namespace finalproject {
 			// what if we want to quit?
 			if (inCmd.StartsWith("quit")) {
 				Print("Quitter.");
-				this.wantsExit = true;
+				this.WantsQuit = true;
 				return;
 			}
 
