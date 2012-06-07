@@ -91,7 +91,8 @@ namespace finalproject {
 
 			List<Item> its = Commands.GetCommandItems(cmd, player.CurrentRoom, player.Inv);
 			if (its.Count < 1) {
-				Print(Messages.RandomUnknownObject(cmd_words.ToString()));
+				Toolbox.ArrayShift(ref cmd_words);
+				Print(Messages.RandomUnknownObject(Toolbox.Join(cmd_words)));
 				return;
 			}
 
@@ -123,6 +124,60 @@ namespace finalproject {
 			this.DoShell();
 		}
 
+		private bool checkEmptyCmd (string normCmd, out string response) { 
+			// what if it's all spaces?
+			if (normCmd.Length < 1) {
+				++this.numEmptyCmds;
+				if (this.numEmptyCmds > threshold_numempty) {
+					response = "THAT'S IT! I WARNED YOU!\n" +
+						this.player.Kill();
+				} else if (this.numEmptyCmds > threshold_numempty_warn) {
+					response = Messages.RandomNoCmdMad();
+				} else {
+					response = Messages.RandomNoCmd();
+				}
+				return true;
+			}
+			--this.numEmptyCmds;
+			response = null;
+			return false;
+		}
+
+		private bool checkQuit (string normCmd, out string response) {
+			// caveat: return value is whether to stop processing commands (true = error)
+			// what if we want to quit?
+			if (normCmd.StartsWith("quit")) {
+				response = "Quitter.";
+				this.WantsQuit = true;
+				return true;
+			}
+			response = null;
+			return false;
+		}
+
+		private bool checkRepeat (string normCmd, out string response, out string finalCmd) {
+			// caveat: return value is whether to stop processing commands (true = error)
+			// want a repeat of last command
+			if (normCmd.StartsWith("again")) {
+				if (this.lastCommand != null) {
+					// want a repeat
+					finalCmd = this.lastCommand;
+					response = null;
+					return false;
+				} else {
+					finalCmd = null;
+					response = Messages.RandomNoCmd();
+					// can't do anything
+					return true;
+				}
+			}
+			// does not want to repeat
+			this.lastCommand = normCmd;
+			finalCmd = normCmd;
+			response = null;
+			return false;
+		}
+
 		public void DoShell () {
 			Console.Write("\n" + prompt);
 			string inCmd = Console.ReadLine();
@@ -132,43 +187,20 @@ namespace finalproject {
 
 			// preliminary command check
 
-			// what if it's all spaces?
-			if (inCmd.Length < 1) {
-				++this.numEmptyCmds;
-				if (this.numEmptyCmds > threshold_numempty) {
-					Print("THAT'S IT! I WARNED YOU!");
-					Print(this.player.Kill());
-				} else if (this.numEmptyCmds > threshold_numempty_warn) {
-					Print(Messages.RandomNoCmdMad());
-				} else {
-					Print(Messages.RandomNoCmd());
-				}
+			string response;
+			if (this.checkEmptyCmd(inCmd, out response) ||
+			    this.checkQuit(inCmd, out response)) {
+				Print(response);
 				return;
 			}
-			--this.numEmptyCmds;
-
-			// what if we want to quit?
-			if (inCmd.StartsWith("quit")) {
-				Print("Quitter.");
-				this.WantsQuit = true;
+			string finalCmd;
+			if (this.checkRepeat(inCmd, out response, out finalCmd)) {
+				Print(response);
 				return;
 			}
 
 			// user entered something, however untelligible
-			if (inCmd.StartsWith("again")) {
-				if (this.lastCommand != null) {
-					// want a repeat
-					inCmd = this.lastCommand;
-				} else {
-					Print(Messages.RandomNoCmd());
-					// can't do anything
-					return;
-				}
-			} else {
-				this.lastCommand = inCmd;
-			}
-
-			this.RunCommand(inCmd);
+			this.RunCommand(finalCmd);
 		}
 
 		public static void Print (string msg) {
