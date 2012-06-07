@@ -13,6 +13,7 @@ namespace finalproject {
 
 		private bool canExit = false;
 		private static readonly string lookString = "You are standing in your hotel room. There is a bed along the south wall, with a nightstand next to it. On the nightstand there is an alarm clock.";
+		private EntranceToCloset closetEntrance = new EntranceToCloset();
 
 		public MyHotelRoom ()
 			: base (
@@ -23,6 +24,7 @@ namespace finalproject {
 			this.itemsHere = new Inventory(
 				new List<Item>() {
 					new AlarmClock(),
+					this.closetEntrance,
 				}
 
 			);
