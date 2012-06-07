@@ -13,7 +13,7 @@ namespace finalproject {
 		private Inventory itemsHere_dark, itemsHere_light;
 
 		private static string roomDesc_light = "You are standing in a small closet.",
-							  roomDesc_dark = "It is too dark to see much.";
+							  roomDesc_dark = "It is too dark to see much. You do, however feel a lightswitch on the wall.";
 		private Carpet carpet = new Carpet();
 		private LightSwitch lightswitch;
 
