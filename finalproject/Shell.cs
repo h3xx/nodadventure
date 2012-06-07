@@ -43,7 +43,7 @@ namespace finalproject {
 			this.DoShell();
 		}
 
-		public void RunCommand (string cmd) {
+		private void runCommand (string cmd) {
 			string[] verb = Commands.GetCommandVerb(cmd);
 			if (verb == null) {
 				Print(Messages.RandomDontUnderstand());
@@ -200,7 +200,7 @@ namespace finalproject {
 			}
 
 			// user entered something, however untelligible
-			this.RunCommand(finalCmd);
+			this.runCommand(finalCmd);
 		}
 
 		public static void Print (string msg) {
