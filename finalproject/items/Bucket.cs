@@ -74,7 +74,6 @@ namespace finalproject {
 
 			// English
 			this.synonyms = new List<string>() {
-				"bucket",
 				capacity + "g bucket",
 				capacity + " g bucket",
 				capacity + " gal bucket",
@@ -125,14 +124,14 @@ namespace finalproject {
 		}
 
 		public override string PerformAction (string act) {
-			act = act.ToLower();
 			switch (act) {
-				//case "kick": (kill player)
+				case "kick":
+					// kill player
+					return "You kick the bucket. " + Globals.CurrentGlobals.CurrentPlayer.Kill();
 				case "drink":
 					return "You don't want to drink that.";
-				//break;
 				default:
-					return Messages.RandomSilly("your bucket");
+					return base.PerformAction(act);
 			}
 		}
 	}
