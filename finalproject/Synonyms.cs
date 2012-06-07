@@ -44,6 +44,7 @@ namespace finalproject {
 
 			// *** ACTIONS ***
 			{"take",  new List<string>() {"get", "pick up", "pick", "steal", "acquire"}},
+			{"drop",  new List<string>() {"put down", "throw away"}},
 			{"inventory", new List<string>() {"i", "inv"}},
 			{"look", new List<string>() {"look at", "examine", "l"}},
 			{"speak", new List<string>() {"say"}},
@@ -69,6 +70,7 @@ namespace finalproject {
 		public readonly static List<string> TransitiveVerbs = new List<string>() {
 			// note: only use the root synonyms from VerbSynonyms
 			"kick", "use", "read", "put", "take", "go", "hit", "walk", "lock", "unlock",
+			"drop", "turn on", "turn off", "open", "close", "search", "throw",
 		};
 
 		public readonly static List<string> Prepositions = new List<string>() {
