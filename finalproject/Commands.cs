@@ -11,14 +11,28 @@ namespace finalproject {
 	class Commands {
 
 		private static Regex wordSplit = new Regex("\\s+"),
-							 whiteSpace = new Regex("(^\\s+|\\s+$)"),
-							 articles = new Regex("\\b(the|a)\\b");
+							 whiteSpace_end = new Regex("(^\\s+|\\s+$)"),
+							 whiteSpace = new Regex("\\s+"),
+							 articles = new Regex("\\b(the|an?)\\b"),
+							 punctuation = new Regex("[\"'.,]");
 
-/*
-		public static string RunCommand (string command, Player pl, Room rm) {
-
-		}*/
-
+		/**
+		 * <summary>
+		 * Normalize a command:
+		 * <list type="number>
+		 * 	<item>Make sure it's not <c>null</c>.</item>
+		 *  <item>Strip, convert and compact whitespace.</item>
+		 *  <item>Strip punctuation.</item>
+		 *  <item>Strip out articles (the, a, an).</item>
+		 * </list>
+		 * </summary>
+		 * <param name="cmd">
+		 * The command the user entered.
+		 * </param>
+		 * <returns>
+		 * The normalized command.
+		 * </returns>
+		 */
 		public static string NormalizeCommand (string cmd) {
 			if (cmd == null) {
 				return "";
@@ -26,7 +40,10 @@ namespace finalproject {
 
 			// normalize the command
 			string stripCmd = cmd.ToLower();
-			stripCmd = whiteSpace.Replace(stripCmd, "");
+			stripCmd = whiteSpace_end.Replace(stripCmd, "");
+			// compact whitespace
+			stripCmd = whiteSpace.Replace(stripCmd, " ");
+			stripCmd = punctuation.Replace(stripCmd, "");
 			stripCmd = articles.Replace(stripCmd, "");
 
 			return stripCmd;
