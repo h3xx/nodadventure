@@ -7,18 +7,26 @@ WARRANTY, to the extent permitted by law.
 namespace finalproject {
 	using System;
 	using System.Collections.Generic;
-	class PhotoOfYou : Item {
+	class PhotoOfYou
+		: Item {
 
-		private static string lookstring = "You see a picture of yourself at a recent fishing trip. You are holding a red herring and smiling.";
+		private static readonly string
+			lookString = "You see a picture of yourself at a recent fishing trip. You are holding a red herring and smiling.",
+			readString = "As you examine the picture looking for something to read on it, you notice that your hat reads \"5 - (3 - 2) = 4\" which you find very strange.";
 
 		public PhotoOfYou ()
-			: base("photo") {
-			this.actionMessages.Add("look", lookstring);
-		}
-		
-		public override string PerformAction (string act) {
-			// FIXME
-			return null;
+			: base(
+				"photo",
+				new List<string>() {
+					"photograph",
+					"picture",
+					"herring",
+				}
+			) {
+
+			this.CanPickUp = false;
+			this.actionMessages.Add("look", lookString);
+			this.actionMessages.Add("read", readString);
 		}
 	}
 }
