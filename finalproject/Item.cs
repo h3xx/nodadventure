@@ -292,7 +292,6 @@ namespace finalproject {
 			return this.type == syn || this.synonyms.Contains(syn);
 		}
 
-
 		/* (this is a bad idea)
 		public static bool operator == (string a, Item b) {
 			return b == a; }
