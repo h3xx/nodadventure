@@ -9,9 +9,13 @@ namespace finalproject {
 	using System.Collections.Generic;
 	class HallwayFloorTwoWest
 		: Room {
-		private static string lookString = "You are standing in a dimly-lit hallway.";
+
+		private static readonly string
+			lookString = "You are standing in a dimly-lit hallway. There are doors on the north and south walls.";
 		private Sconce lights = new Sconce();
 		private Carpet carpet = new Carpet();
+		private PhotoOfYou photo = new PhotoOfYou();
+
 		private Door doorSouth = new Door(
 			"room 203",
 			new string[] {
@@ -37,14 +41,21 @@ namespace finalproject {
 				"Second Floor Hallway",
 				lookString
 			) {
+
 			this.itemsHere = new Inventory(
 				new List<Item>() {
 					this.lights,
 					this.carpet,
 					this.doorSouth,
 					this.doorNorth,
+					this.photo,
 				}
 			);
+
+			this.ExitsHere.AddExit("n", null);
+			this.ExitsHere.LockExit("n");
+			this.ExitsHere.AddExit("s", null);
+			this.ExitsHere.LockExit("s");
 		}
 	}
 }

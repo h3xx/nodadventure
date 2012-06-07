@@ -9,7 +9,9 @@ namespace finalproject {
 	using System.Collections.Generic;
 	class HallwayFloorTwoMid
 		: Room {
-		private static string lookString = "You are standing in a dimly-lit hallway.";
+
+		private static readonly string
+			lookString = "You are standing in a dimly-lit hallway. There are doors on the north and south walls.";
 		private Sconce lights = new Sconce();
 		private Carpet carpet = new Carpet();
 		private Door doorSouth = new Door(
@@ -48,7 +50,12 @@ namespace finalproject {
 					}
 				);
 
+			this.ExitsHere.AddExit("n", null);
+			this.ExitsHere.LockExit("n");
+
 			// HACK : your room is not locked.
+			//this.ExitsHere.AddExit("s", null);
+			//this.ExitsHere.LockExit("s");
 			this.doorSouth.SetUnlocked();
 		}
 	}
