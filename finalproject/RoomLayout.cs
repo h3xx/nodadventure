@@ -32,12 +32,17 @@ namespace finalproject {
 		private void secondFloor (out Room hallwayWest, out Room hallwayEast) {
 			Room myroom = new MyHotelRoom(); 
 			Room myBathroom = new MyHotelRoomBathroom();
+			Room myCloset = new Closet();
 
 			this.StartingPoint = myroom;
 
 			// connect room to bathroom
-			myroom.ExitsHere.AddExit("e", "doorway", "leading to a small bathroom {0}", myBathroom);
-			myBathroom.ExitsHere.AddExit("w", "doorway", "leading back into your hotel room {0}", myroom);
+			myroom.ExitsHere.AddExit("e", "door", "leading to a small bathroom {0}", myBathroom);
+			myBathroom.ExitsHere.AddExit("w", "door", "leading back into your hotel room {0}", myroom);
+
+			// connect room to closet
+			myroom.ExitsHere.AddExit("ne", "doorway", "leading to a small closet {0}", myCloset);
+			myCloset.ExitsHere.AddExit("sw", "doorway", "leading back into your hotel room {0}", myroom);
 
 			Room hallwayMid = new HallwayFloorTwoMid();
 
