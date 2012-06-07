@@ -111,6 +111,12 @@ namespace finalproject {
 			"What a silly thing to {0}.",
 		};
 
+		private static List<string> noObject = new List<string>() {
+			"You don't see any {0} here.",
+			"You don't see that object anywhere.",
+			"You don't see {0} anywhere.",
+		};
+
 		private static List<string> noCmd = new List<string>() {
 			"Just keep hitting the enter key, see what happens.",
 			"You're going to break your enter key if you keep doing that.",
@@ -197,6 +203,10 @@ namespace finalproject {
 
 		public static string RandomNoRoom () {
 			return selectRandom(noRoom);
+		}
+
+		public static string RandomUnknownObject (string thing) {
+			return formatRandom(noObject, thing);
 		}
 
 		public static string GreetingMsg () {
