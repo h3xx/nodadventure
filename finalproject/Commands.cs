@@ -104,7 +104,7 @@ namespace finalproject {
 				allCombos.Add(tc);
 				// only three-word combos or higher
 				subsplit = wordSplit.Split(tc);
-				if (subsplit.Length > 2) {
+				if (subsplit.Length > 1) {
 					subcombos = wordCombinationsFromEnd(subsplit);
 					foreach (string sc in subcombos) {
 						allCombos.Add(sc);
@@ -178,7 +178,7 @@ namespace finalproject {
 				//Console.WriteLine("trying combination: {0}", phrase);
 				Item foundItem = playerInventory.GetItem(phrase);
 				if (foundItem != null) {
-					Console.WriteLine("Found it!");
+					//Console.WriteLine("Found it!");
 					matches.Add(foundItem);
 				}
 
