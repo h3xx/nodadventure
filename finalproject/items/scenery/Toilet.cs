@@ -17,9 +17,13 @@ namespace finalproject {
 			"You try to pick up, putting your face in an awkward and smelly position. You almost vomit, then decide that was a stupid idea.",
 			"Why don't you try exploring more instead of wasting my time?",
 		};
+
+		private static string readString = "There's nothing to read on it.";
+
 		public Toilet ()
 			: base(
 				"toilet",
+				"grubby-looking",
 				new List<string>() {
 					"shitter",
 					"bowl",
@@ -28,6 +32,7 @@ namespace finalproject {
 			) {
 
 			this.CanPickUp = false;
+			this.actionMessages.Add("read", readString);
 		}
 
 		public override string MsgFailPickup () {

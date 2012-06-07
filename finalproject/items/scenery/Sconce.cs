@@ -17,6 +17,10 @@ namespace finalproject {
 			"Why don't you try exploring more?",
 		};
 
+		private static string
+			readString = "There's nothing to read on it.",
+			lookString = "You see a small light fixture. It puts out enough light to see outlines, but nothing too clearly.";
+
 		public Sconce ()
 			: base(
 				"sconce",
@@ -33,7 +37,8 @@ namespace finalproject {
 			) {
 
 			this.CanPickUp = false;
-			this.actionMessages.Add("read", "There's nothing to read on it.");
+			this.actionMessages.Add("read", readString);
+			this.actionMessages.Add("look", lookString);
 		}
 
 		public override string MsgFailPickup () {

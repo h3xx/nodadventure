@@ -10,7 +10,8 @@ namespace finalproject {
 		: Door {
 
 
-		public YourRoomDoor () : base (null) {
+		public YourRoomDoor ()
+			: base (null) {
 
 		}
 	}
