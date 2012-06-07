@@ -147,8 +147,11 @@ namespace finalproject {
 		}
 
 		public virtual string PerformCommand (string cmd) {
-			string act = Synonyms.GetVerbBaseSynonym(cmd);
-			return this.PerformAction(act);
+			string[] verb = Commands.GetCommandVerb(cmd);
+			if (verb == null) {
+				return this.PerformAction(cmd);
+			}
+			return this.PerformAction(verb[1]);
 		}
 
 		public virtual string PerformAction (string act) {
