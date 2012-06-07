@@ -13,13 +13,14 @@ namespace finalproject {
 			CurrentGlobals = new Globals();
 		}
 
-		public DateTime Time = new DateTime(2012, 6, 5, 21, 20, 0);
+		public DateTime Time;
 
 		public Globals () {
+			 this.Time = new DateTime(2012, 6, 5, 23, 20, 0);
 		}
 
 		public void Tick () {
-			this.Time.AddSeconds(60);
+			this.Time = this.Time.AddSeconds(20);
 		}
 	}
 }
