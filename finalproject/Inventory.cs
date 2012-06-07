@@ -84,10 +84,12 @@ namespace finalproject {
 
 				if (youSeeHere.Length > 0) {
 					invdesc = "You see here:\n" + youSeeHere;
+				} else {
+					invdesc = null;
 				}
 			}
 
-			return null;
+			return invdesc;
 		}
 	}
 }
