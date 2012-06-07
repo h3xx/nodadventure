@@ -73,6 +73,23 @@ namespace finalproject {
 			return this.itemsHere.GetItem(itemdesc);
 		}
 
+		public void AddItem (Item i) {
+			this.itemsHere.AddItem(i);
+		}
+
+		public bool RemoveItem (string itemdesc) {
+			return this.RemoveItem(this.GetItem(itemdesc));
+		}
+
+		public bool RemoveItem (Item i) {
+			if (this.itemsHere == null) {
+				return false;
+			}
+
+			// who really gives a shit if it fails?
+			return this.itemsHere.RemoveItem(i);
+		}
+
 		public string Look () {
 			return this.Look(true);
 		}
