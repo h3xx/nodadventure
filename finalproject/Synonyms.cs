@@ -63,6 +63,7 @@ namespace finalproject {
 			{"walk", null},
 			{"go", null},
 			{"wait", null},
+			{"quit", null},
 		};
 
 		public readonly static List<string> TransitiveVerbs = new List<string>() {
