@@ -36,8 +36,8 @@ namespace finalproject {
 			this.StartingPoint = myroom;
 
 			// connect room to bathroom
-			myroom.ExitsHere.AddExit("e", "doorway", "leading to a small bathroom", myBathroom);
-			myBathroom.ExitsHere.AddExit("w", "doorway", "leading back into your hotel room", myroom);
+			myroom.ExitsHere.AddExit("e", "doorway", "leading to a small bathroom {0}", myBathroom);
+			myBathroom.ExitsHere.AddExit("w", "doorway", "leading back into your hotel room {0}", myroom);
 
 			Room hallwayMid = new HallwayFloorTwoMid();
 
