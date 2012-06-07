@@ -36,12 +36,27 @@ namespace finalproject {
 			return str.Substring(0,1).ToUpper() + str.Substring(1);
 		}
 
+		public static string Join (string[] words) {
+			return Join(words, " ");
+		}
+
+		public static string Join (string[] words, string glue) {
+			StringBuilder acc = new StringBuilder();
+			foreach (string word in words) {
+				acc.Append(word).Append(glue);
+			}
+			// remove trailing space
+			acc.Remove(acc.Length - glue.Length, glue.Length);
+
+			return acc.ToString();
+		}
+
 		public static string WrapString (string text) {
-			return WrapString(text, Console.BufferWidth, "");
+			return WrapString(text, "");
 		}
 
 		public static string WrapString (string text, string prefix) {
-			return WrapString(text, Console.BufferWidth - 5, prefix);
+			return WrapString(text, Console.BufferWidth - 1, prefix);
 		}
 
 		public static string WrapString (string text, int width) {
@@ -54,7 +69,9 @@ namespace finalproject {
 			var lines = text.Split('\n').ToList();
 			var result = new StringBuilder(prefix);
 			foreach (var line in lines) {
-				var words = line.Split(new string[] {" "}, StringSplitOptions.RemoveEmptyEntries).ToList();
+				// (this removes indents)
+				//var words = line.Split(new string[] {" "}, StringSplitOptions.RemoveEmptyEntries).ToList();
+				var words = line.Split(' ').ToList();
 	
 				int lineSize = 0;
 				foreach (var word in words) {
