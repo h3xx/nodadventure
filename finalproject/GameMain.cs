@@ -26,7 +26,8 @@ namespace finalproject {
 			//verboseRoomDemo();
 			//verboseExitDemo();
 			//movementDemo();
-			revealObjectDemo();
+			//revealObjectDemo();
+			Game foo = new Game();
 			holdTerminal();
 		}
 
