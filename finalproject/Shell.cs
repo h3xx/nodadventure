@@ -83,37 +83,34 @@ namespace finalproject {
 			}
 
 			// transitive verbs without an object
-			if (Synonyms.TransitiveVerbs.Contains(verb[1])) {
-				if (cmd_words.Length < 2) {
-					Print(Messages.RandomNoObjectForVerb(verb[1]));
-					return;
-				}
-
-				List<Item> its = Commands.GetCommandItems(cmd, player.CurrentRoom, player.Inv);
-				if (its.Count < 1) {
-					Print(Messages.RandomUnknownObject(cmd_words.ToString()));
-					return;
-				}
-				foreach (Item i in its) {
-					Print(i.PerformCommand(cmd));
-					if (verb[1] == "take") {
-						// round about item collection
-						if (i.PlayerHas) {
-							player.CurrentRoom.RemoveItem(i);
-							player.Inv.AddItem(i);
-						}
-					} else if (verb[1] == "drop") {
-						// round about item loss
-						if (!i.PlayerHas) {
-							player.CurrentRoom.AddItem(i);
-							player.Inv.RemoveItem(i);
-						}
-					}
-				}
+			if (Synonyms.TransitiveVerbs.Contains(verb[1]) &&
+				cmd_words.Length < 2) {
+				Print(Messages.RandomNoObjectForVerb(verb[1]));
 				return;
 			}
 
-			Print(Messages.RandomDontUnderstand());
+			List<Item> its = Commands.GetCommandItems(cmd, player.CurrentRoom, player.Inv);
+			if (its.Count < 1) {
+				Print(Messages.RandomUnknownObject(cmd_words.ToString()));
+				return;
+			}
+
+			foreach (Item i in its) {
+				Print(i.PerformCommand(cmd));
+				if (verb[1] == "take") {
+					// round about item collection
+					if (i.PlayerHas) {
+						player.CurrentRoom.RemoveItem(i);
+						player.Inv.AddItem(i);
+					}
+				} else if (verb[1] == "drop") {
+					// round about item loss
+					if (!i.PlayerHas) {
+						player.CurrentRoom.AddItem(i);
+						player.Inv.RemoveItem(i);
+					}
+				}
+			}
 
 		}
 
