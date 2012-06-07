@@ -34,6 +34,15 @@ namespace finalproject {
 			this.player = player;
 		}
 
+		public void FirstShell () {
+			Print(Messages.GreetingMsg());
+			// give a description of the room, if any
+			if (this.player.CurrentRoom != null) {
+				Print(this.player.CurrentRoom.EnterRoom());
+			}
+			this.DoShell();
+		}
+
 		public void RunCommand (string cmd) {
 			string[] verb = Commands.GetCommandVerb(cmd);
 			if (verb == null) {
@@ -113,15 +122,6 @@ namespace finalproject {
 				}
 			}
 
-		}
-
-		public void FirstShell () {
-			Print(Messages.GreetingMsg());
-			// give a description of the room, if any
-			if (this.player.CurrentRoom != null) {
-				Print(this.player.CurrentRoom.EnterRoom());
-			}
-			this.DoShell();
 		}
 
 		private bool checkEmptyCmd (string normCmd, out string response) { 
