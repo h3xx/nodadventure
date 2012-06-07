@@ -180,7 +180,7 @@ namespace finalproject {
 						if (method != null) {
 							exitsSentence += Messages.RandomDeclarativeSingular() + " " + English.Articalize(method) + " here " +
 								String.Format(verbose, dirDesc) + ".";
-						} else {
+						} else if (verbose != null && !exitsSentence.Contains(verbose)) {
 							exitsSentence += verbose;
 						}
 
