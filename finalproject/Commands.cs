@@ -19,7 +19,11 @@ namespace finalproject {
 
 		}*/
 
-		private static string normalizeCommand (string cmd) {
+		public static string NormalizeCommand (string cmd) {
+			if (cmd == null) {
+				return "";
+			}
+
 			// normalize the command
 			string stripCmd = cmd.ToLower();
 			stripCmd = whiteSpace.Replace(stripCmd, "");
@@ -29,7 +33,7 @@ namespace finalproject {
 		}
 
 		private static string[] splitCommand (string cmd) {
-			string stripCmd = normalizeCommand(cmd);
+			string stripCmd = NormalizeCommand(cmd);
 			return wordSplit.Split(stripCmd);
 		}
 
@@ -171,16 +175,18 @@ namespace finalproject {
 
 			List<Item> matches = new List<Item>();
 			foreach (string phrase in tryWordCombinations) {
-				Console.WriteLine("trying combination: {0}", phrase);
+				//Console.WriteLine("trying combination: {0}", phrase);
 				Item foundItem = playerInventory.GetItem(phrase);
 				if (foundItem != null) {
 					Console.WriteLine("Found it!");
 					matches.Add(foundItem);
 				}
 
-				foundItem = currentRoom.GetItem(phrase);
-				if (foundItem != null) {
-					matches.Add(foundItem);
+				if (currentRoom != null) {
+					foundItem = currentRoom.GetItem(phrase);
+					if (foundItem != null) {
+						matches.Add(foundItem);
+					}
 				}
 			}
 
