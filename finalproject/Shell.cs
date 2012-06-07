@@ -44,13 +44,12 @@ namespace finalproject {
 		}
 
 		private void runCommand (string cmd) {
-			string[] verb = Commands.GetCommandVerb(cmd);
+			string[] cmd_words = cmd.Split(' ');
+			string[] verb = Commands.GetCommandVerb(cmd_words);
 			if (verb == null) {
 				Print(Messages.RandomDontUnderstand());
 				return;
 			}
-
-			string[] cmd_words = cmd.Split(' ');
 
 			if (verb[1] == "wait") {
 				// do nothing
