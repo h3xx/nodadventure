@@ -18,7 +18,7 @@ namespace finalproject {
 			this.shell = new Shell(this.player);
 			this.player = new Player();
 			this.shell.FirstShell();
-			while (!this.player.isDead && !this.shell.wantsExit) {
+			while (!this.player.isDead && !this.shell.WantsQuit) {
 				this.shell.DoShell();
 			}
 		}
