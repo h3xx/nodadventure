@@ -183,6 +183,8 @@ namespace finalproject {
 						} else {
 							exitsSentence += verbose;
 						}
+
+						exitsSentence += " ";
 					} // else we're fucked
 				}
 			}
