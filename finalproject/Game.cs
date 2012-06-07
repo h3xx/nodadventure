@@ -20,7 +20,7 @@ namespace finalproject {
 			Globals.CurrentGlobals.CurrentPlayer.CurrentRoom = this.layout.StartingPoint;
 			this.shell = new Shell();
 			this.shell.FirstShell();
-			while (!this.shell.WantsQuit) {
+			while (!this.shell.WantsQuit && !this.shell.WantsRestart) {
 				this.shell.DoShell();
 			}
 			if (this.shell.WantsRestart) {

@@ -193,9 +193,7 @@ namespace finalproject {
 		private void askRestart () {
 			Print("\nDo you want to restart [y/N]? ");
 			string inString = Console.ReadLine().ToLower();
-			if (inString.StartsWith("y")) {
-				this.WantsRestart = true;
-			}
+			this.WantsRestart = inString.StartsWith("y");
 		}
 
 		public void DoShell () {
