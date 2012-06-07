@@ -11,7 +11,9 @@ namespace finalproject {
 		: Room {
 
 		private static readonly string
-			lookString = "You are standing in a dimly-lit hallway. There are doors on the north and south walls.";
+			lookString = "You are standing in a dimly-lit hallway. There are doors on the north and south walls."+
+				" You see a photo hanging on the west wall.";
+
 		private Sconce lights = new Sconce();
 		private Carpet carpet = new Carpet();
 		private PhotoOfYou photo = new PhotoOfYou();
